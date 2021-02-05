@@ -15,6 +15,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SettingAdminController;
 use App\Http\Controllers\Admin\CommonPageController;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ use App\Http\Controllers\Admin\CommonPageController;
 */
 
 Route::get('/', [IndexController::class, 'index']);
+
+
 
 //----About us -----//
 
@@ -127,4 +130,7 @@ Route::post('admin/editservicesettingstore', [SettingAdminController::class, 'ed
 
 Route::post('admin/deleteservicesetting', [SettingAdminController::class, 'deleteservicesetting'])->name('deleteservicesetting.submit');
 
+Route::get('admin/',function() {
+    return Redirect::to('/admin/login');
 
+});
