@@ -31,21 +31,54 @@
           <h3><b>White Labeling</b></h3>
 	    </div>
       </section>
-	  <section class="section section-lg ">
+      @php 
+      $x = 0;
+      @endphp
+      @foreach($pagemodules as $module)
+      @php
+       $x++;
+      @endphp
+     
+       @if($x % 2 == 0)
+        <section class="section section-lg">
+        <div class="container">
+          <div class="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse">
+            <div class="col-lg-6 col-xl-5">
+              <div class="inset-right-3">
+                <h3 class="wow-outer"><span class="wow slideInDown">{{$module->title}}</span></h3>
+                <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">	
+                {!! $module->description !!}
+		            </p>
+                
+              </div>
+            </div>
+            
+			<div class="col-md-10 col-lg-6"><img class="img-responsive" src="{{asset('')}}images/pagemodule/{{$module->image}}" alt="" width="570" height="368">
+            </div>
+			
+            
+          </div>
+        </div>
+      </section>
+       @else
+      
+      	  <section class="section section-lg ">
         <div class="container">
           <div class="row row-50 justify-content-center justify-content-lg-between">
             <div class="col-md-10 col-lg-6 col-xl-5">
-             <h3 class="wow-outer"><span class="wow slideInDown">"We Help Agencies Make Language Access Easier" </span></h3>
-              <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">Translation and interpreting agencies across the country struggle daily with meeting their deaf consumers' language needs and serving them with quality interpreters that deliver brand loyalty. Unspoken Language Services was built to partner with you as an agency to provide on-site Sign Language interpreting support.</span></p>
-              <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">Our team <b class="font-bold">seamlessly</b> integrates with your agency’s processes and has the nationwide capacity to accommodate your deaf consumer as needed. Whether your agency needs an interpreter for a routine medical appointment or needs to arrange a team of interpreters for an upcoming conference, we can help.</span></p>
-              <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">Learn more about Unspoken’s White Labeling American Sign Interpreting Services, and the results we’ve delivered to our partnered agencies.</span></p>
+             <h3 class="wow-outer"><span class="wow slideInDown">{{$module->title}} </span></h3>
+              <p class="wow-outer">
+              {!! $module->description !!}
+              </p>
            
             </div>
-            <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInRight" src="https://secureservercdn.net/72.167.25.126/2v8.0a8.myftpupload.com/wp-content/uploads/bb-plugin/cache/qtq80-SDQues-circle.jpeg" alt="" width="570" height="368"/>
+            <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInRight" src="{{asset('')}}images/pagemodule/{{$module->image}}" alt="" width="570" height="368"/>
             </div>
           </div>
         </div>
       </section>
+      @endif
+      @endforeach
 	  	<!--Learn How We Can Help! -->
         <section class="section section-1 bg-primary-darker text-center">
           <div class="container">

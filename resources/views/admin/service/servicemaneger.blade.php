@@ -116,7 +116,7 @@
                               <td>{!! $module->description !!}</td>
                               <td><img src="{{asset('')}}images/service/{{$module->image}}" width=150 height=150></td>
                               <td class="text-center w-25">
-                                <a href='{{"/admin/editservicemoduleview/{$id}/{$module->id}"}}' class="btn btn-sm btn-info mt-1 getpagemoduleinfo">
+                                <a href='{{url("/admin/editservicemoduleview/{$id}/{$module->id}")}}' class="btn btn-sm btn-info mt-1 getpagemoduleinfo">
                                   <span data-feather="edit"></span> Edit
                                 </a>
                                 <button type="button" class="btn btn-sm btn-danger mt-1 delservicemoduleclass" servicemodule-id="{{$module->id}}" data-toggle="modal" data-target="#servicemoduledel">

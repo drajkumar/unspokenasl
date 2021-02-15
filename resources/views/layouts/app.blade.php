@@ -27,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('admins/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
         <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -43,7 +43,7 @@
         }
       }
     </style>
-    <link href="{{ asset('admins/css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/dashboard.css') }}" rel="stylesheet">
 
      @stack('css')
 </head>
@@ -87,7 +87,9 @@
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item" href="{{ url('/admin/home')}}"><span data-feather="home"></span> Home</a></li>
-                  <li><a class="dropdown-item" href="{{ url('/admin/service')}}"><span data-feather="settings"></span> Service</a></li>
+                <li><a class="dropdown-item" href="{{ url('/admin/service')}}"><span data-feather="settings"></span> Service</a></li>
+                <li><a class="dropdown-item" href="{{ url('/admin/agencies')}}"><span data-feather="layout"></span> Agencies</a></li>
+                <li><a class="dropdown-item" href="{{ url('/admin/faq')}}"><span data-feather="layout"></span> Faq</a></li>
                   <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                 </ul>
@@ -145,10 +147,10 @@
 <script>window.jQuery || document.write('<script src={{ asset("admin/js/jquery.slim.min.js") }}><\/script>')</script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-<script src="{{ asset('admins/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('admins/js/feather.min.js') }}"></script>
-<script src="{{ asset('admins/js/Chart.min.js') }}"></script>
-<script src="{{ asset('admins/js/dashboard.js') }}"></script>
+<script src="{{ asset('admin/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('admin/js/feather.min.js') }}"></script>
+<script src="{{ asset('admin/js/Chart.min.js') }}"></script>
+<script src="{{ asset('admin/js/dashboard.js') }}"></script>
 @stack('scripts')
 </body>
 </html>

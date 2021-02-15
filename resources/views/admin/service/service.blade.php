@@ -190,7 +190,7 @@
                               <td>{!! $pagemodule->description !!}</td>
                               <td><img src="{{asset('')}}images/pagemodule/{{$pagemodule->image}}" width=150 height=150></td>
                               <td class="text-center w-25">
-                                <a href='{{"/admin/editpagemodule/{$pagemodule->id}"}}' class="btn btn-sm btn-info mt-1 getpagemoduleinfo">
+                                <a href='{{url("/admin/editpagemodule/{$pagemodule->id}")}}' class="btn btn-sm btn-info mt-1 getpagemoduleinfo">
                                   <span data-feather="edit"></span> Edit
                                 </a>
                                 <button type="button" class="btn btn-sm btn-danger mt-1 delpagemoduleclass" pagemodule-id="{{$pagemodule->id}}" data-toggle="modal" data-target="#serviceintromoduledel">

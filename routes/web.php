@@ -15,7 +15,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SettingAdminController;
 use App\Http\Controllers\Admin\CommonPageController;
-use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\Admin\ServicefaqagencController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +29,6 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 Route::get('/', [IndexController::class, 'index']);
-
-
 
 //----About us -----//
 
@@ -130,7 +128,22 @@ Route::post('admin/editservicesettingstore', [SettingAdminController::class, 'ed
 
 Route::post('admin/deleteservicesetting', [SettingAdminController::class, 'deleteservicesetting'])->name('deleteservicesetting.submit');
 
-Route::get('admin/',function() {
-    return Redirect::to('/admin/login');
+Route::get('admin/agencies', [ServicefaqagencController::class, 'agenciesview']);
 
-});
+Route::get('admin/addagencies', [ServicefaqagencController::class, 'storeagencies']);
+
+Route::get('admin/editagencies/{id}', [ServicefaqagencController::class, 'updateagencies']);
+
+Route::get('admin/faq', [ServicefaqagencController::class, 'faqview']);
+
+Route::get('admin/question_and_answer', [ServicefaqagencController::class, 'queans']);
+
+Route::post('admin/storequestion', [ServicefaqagencController::class, 'storequeans'])->name('storequeans.submit');
+
+Route::get('admin/editquestion_and_answer/{id}', [ServicefaqagencController::class, 'queseditview']);
+
+Route::post('admin/updatequestion', [ServicefaqagencController::class, 'updatequeans'])->name('updatequeans.submit');
+
+Route::post('admin/removequestion', [ServicefaqagencController::class, 'deletequesans'])->name('deletequesans.submit');
+
+

@@ -9,6 +9,7 @@ use App\Models\Pagemodule;
 use App\Models\Service;
 use App\Models\Servicemodule;
 use App\Models\Servicesetting;
+use App\Models\Fquestion;
 
 class OurserviceController extends Controller
 {
@@ -23,12 +24,15 @@ class OurserviceController extends Controller
 
     public function agencies()
     {
-        return view('frontend.services.whitelabeling');
+        $pagemodules = Pagemodule::where('page_name', 'agencies')->get();
+        return view('frontend.services.whitelabeling', compact('pagemodules'));
     }
 
     public function faq()
     {
-        return view('frontend.services.faq');
+        $pageintro = Pagemodule::where('page_name', 'faq')->first();
+        $fquestions = Fquestion::get();
+        return view('frontend.services.faq', compact('pageintro', 'fquestions'));
     }
 
     public function servicepagedynamic($id, $title){
