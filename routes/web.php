@@ -11,7 +11,8 @@ use App\Http\Controllers\BlogController;
 
 
 
-//----- Route for admin ------// 
+//----- Route for admin ------//
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SettingAdminController;
 use App\Http\Controllers\Admin\CommonPageController;
@@ -76,7 +77,10 @@ Route::get('/unspoken-thoughts', [BlogController::class, 'blog']);
 
 Auth::routes();
 
+Route::get('admin/',function() {
+    return Redirect::to('/admin/login');
 
+}); 
 
 Route::get('admin/home', [HomeController::class, 'index'])->name('home');
 

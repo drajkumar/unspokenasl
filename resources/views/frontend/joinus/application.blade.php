@@ -3,7 +3,14 @@
 @section('title','Application')
 
 @push('css')
-<style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+    integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+    crossorigin="anonymous" />
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css"
+    integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA=="
+    crossorigin="anonymous" />
+  <style>
   .form-control:focus {
     border-color: #116F65;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(6, 105, 89, 0.541);
@@ -367,4 +374,38 @@
 
 @push('scripts')
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/jquery-input-mask-phone-number@1.0.15/dist/jquery-input-mask-phone-number.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+      integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+      crossorigin="anonymous"></script>
+  <script>
+    $(function () {
+      $('#inputDate').daterangepicker({
+        timePicker: true,
+        startDate: moment().startOf('hour'),
+        endDate: moment().startOf('hour').add(32, 'hour'),
+        locale: {
+          format: 'M/DD/YYYY hh:mm A'
+        }
+      });
+
+      $('#inputPhone').usPhoneFormat({
+        format: '(xxx) xxx-xxxx',
+      });
+
+      $('#selectCertificate').select2({
+        placeholder: "Select Certifications",
+        multiple: true
+      });
+      $('#selectComfortable').select2({
+        placeholder: "Select Interpreting Situation",
+        multiple: true
+      });
+      $('#inputState').select2({
+        theme: "bootstrap"
+      });
+    });
+  </script>
 @endpush

@@ -3,7 +3,7 @@
 @section('title','Contact Unspoken')
 
 @push('css')
-
+<link rel="stylesheet" href="{{asset('frontend/css/contact.css')}}">
 @endpush
 
 
