@@ -30,10 +30,9 @@
         <div class="container">
           <div class="row row-50 justify-content-center justify-content-lg-between">
             <div class="col-md-10 col-lg-6">
-              <p>Unspoken Language Services is a boutique agency providing exclusive on-site American Sign Language interpreting services. We focus on servicing Deaf and Hard of Hearing consumers with the highest level of interpreting quality and cultural competence. We know your agency list was limitless, but you chose our passion-driven company to serve your communication needs best.</p>
-			  <p>Unspoken Language Services is a boutique agency providing exclusive on-site American Sign Language interpreting services. We focus on servicing Deaf and Hard of Hearing consumers with the highest level of interpreting quality and cultural competence. We know your agency list was limitless, but you chose our passion-driven company to serve your communication needs best.</p>
+              <p>{!! $pageintro->description !!}</p>
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-5"> <img class="img-responsive" src="https://secureservercdn.net/72.167.25.126/2v8.0a8.myftpupload.com/wp-content/uploads/bb-plugin/cache/qtq80-BtsG82-e1548050183370-300x200-landscape.jpeg" alt="" width="470" height="334"/>
+            <div class="col-md-10 col-lg-6 col-xl-5"> <img class="img-responsive" src="{{asset('')}}images/pagemodule/{{$pageintro->image}}" alt="" width="470" height="334"/>
             </div>
           </div>
         </div>
@@ -46,7 +45,7 @@
               <div class="col-sm-10 col-lg-7 col-xl-6">
                 <h3 class="wow-outer"><span class="wow slideInDown" style="visibility: visible; animation-name: slideInDown;">Why Choose Us? </span></h3>
                 <p class="wow-outer offset-top-3"><span class="wow slideInDown" data-wow-delay=".05s" style="visibility: visible; animation-delay: 0.05s; animation-name: slideInDown;">We guarantee a humanistic experience with those who are hiring, receiving, and providing services.</span></p>
-                <div class="wow-outer button-outer"> <a class="button button-primary button-winona wow slideInDown" href="the-unspoken-promise.html" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInDown;"><div class="content-original">Learn More</div><div class="content-dubbed">Learn More</div></a></div>
+                <div class="wow-outer button-outer"> <a class="button button-primary button-winona wow slideInDown" href="{{ url('/the-unspoken-promise')}}" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInDown;"><div class="content-original">Learn More</div><div class="content-dubbed">Learn More</div></a></div>
               </div>
             </div>
           </div>

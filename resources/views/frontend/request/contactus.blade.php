@@ -37,12 +37,11 @@
         <div class="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse">
           <div class="col-md-10 col-lg-6 col-xl-5">
             <h4 class="wow-outer"><span class="wow slideInDown">Office Hours:</span></h4>
-            <p class="wow-outer mt-0"><span class="wow slideInDown" data-wow-delay=".05s">Monday-Friday: 8am-5pm
-                PST</span></p>
+            <p class="wow-outer mt-0"><span class="wow slideInDown" data-wow-delay=".05s">{{$contactus->office_hour}}
+              </span></p>
             <h4 class="wow-outer"><span class="wow slideInDown">In Need of Services During:</span></h4>
-            <p class="wow-outer mt-0"><span class="wow slideInDown" data-wow-delay=".05s">After Hours, Weekends, or
-                Holidays?</span></p>
-            <p class="wow-outer mt-0"><span class="wow slideInDown" data-wow-delay=".05s">Contact Us Below!</span></p>
+            <p class="wow-outer mt-0"><span class="wow slideInDown" data-wow-delay=".05s">{{$contactus->need_service}}</span></p>
+            
             <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">
                 <div class="fl-html">
                   <h5 style="text-align: left;"><code>
@@ -77,21 +76,18 @@
             <h4 class="wow-outer mt-0"><span class="wow slideInDown">Email</span></h4>
             <p class="wow-outer mt-0"><span class="wow slideInDown" data-wow-delay=".05s"><a
                   style="color: #005e54;text-decoration:none;"
-                  href="mailto:services@unspokensigns.com">services@unspokensigns.com</a></span></p>
+                  href="mailto:services@unspokensigns.com">{{$contactus->email}}</a></span></p>
             <h4 class="wow-outer"><span class="wow slideInDown">Phone</span></h4>
-            <p class="wow-outer mt-0"><span class="wow slideInDown" data-wow-delay=".05s">1.888.280.0751</span></p>
+            <p class="wow-outer mt-0"><span class="wow slideInDown" data-wow-delay=".05s">{{$contactus->phone}}</span></p>
             <h4 class="wow-outer"><span class="wow slideInDown">Address</span></h4>
-            <p class="wow-outer mt-0"><span class="wow slideInDown" data-wow-delay=".05s">1370 Valley Vista Drive
-                <br>Suite 200 <br>Diamond Bar, CA 91765</span></p>
+            <p class="wow-outer mt-0"><span class="wow slideInDown" data-wow-delay=".05s">{!! $contactus->address !!}</span></p>
             <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">
-                <iframe
-                  src="https://www.google.com/maps?q=1370%20Valley%20Vista%20Drive%0ASuite%20200%0ADiamond%20Bar%2C%20CA%2091765&amp;output=embed&amp;hl=en&amp;z=14"
-                  frameborder="0" class="wpcw-widget-contact-map"></iframe>
+                {!! $contactus->map !!}
 
               </span></p>
           </div>
           <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInRight"
-              src="https://secureservercdn.net/72.167.25.126/2v8.0a8.myftpupload.com/wp-content/uploads/bb-plugin/cache/qtq80-DzBzFy-circle.jpeg"
+              src="{{ asset('')}}images/pagemodule/{{$pageintro->image}}"
               alt="" width="570" height="368" />
           </div>
         </div>
@@ -100,7 +96,7 @@
     <section class="section section-lg text-center pt-0">
       <div class="container">
         <div class="wow-outer button-outer"><a class="button button-lg button-primary button-winona wow slideInDown"
-            data-wow-delay=".1s" href="request-services.html"
+            data-wow-delay=".1s" href="{{url('/request-services')}}"
             style="visibility: visible; animation-delay: 0.1s; animation-name: slideInDown;">
             <div class="content-original">REQUEST SERVICES ONLINE</div>
             <div class="content-dubbed">REQUEST SERVICES ONLINE</div>

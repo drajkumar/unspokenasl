@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Agencies')
+@section('title','Faq')
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -9,87 +9,67 @@
 
 @section('content')
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-
-          <nav class="navbar navbar-expand-lg  navbar-dark bg-dark mt-3">
-        <a class="navbar-brand text-center pl-5 pr-5" href="{{ url('/admin/agencies') }}">Agencies</a>
+     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark mt-3">
+        <a class="navbar-brand text-center pl-5 pr-5" href="{{ url('/admin/faq') }}">Faq</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav mt-3">
           <ul class="navbar-nav">
-           <li class="nav-item active ml-2">
-              <a class="nav-link" href="{{ url('/admin/agencies') }}">Agencies page module
-              <span class="sr-only">(current)</span></a>
+            <li class="nav-item active ml-2">
+              <a class="nav-link" href="{{ url('/admin/faq') }}">Faq page module <span class="sr-only">(current)</span></a>
             </li>
       
-           
+            <li class="nav-item active ml-2">
+              <a class="nav-link" href="{{ url('/admin/questionandanswerview') }}">Question and answer
+              <span class="sr-only">(current)</span></a>
+            </li>
 
-          
+            
           </ul>
         </div>
       </nav>
-	
-		@if(session('pageintrosuccess'))
-         <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> {{session('pageintrosuccess')}}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        @endif
 
-                 @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul style="list-style: none;">
-                    <?php $x = 0; ?>
-                        @foreach ($errors->all() as $error)
-                        <?php $x++?>
-                            <li>{{$x}}:{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+
+
+
 
 	<div class="content-body">
-			 <!-- row -->
-        
-
-      	
 
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-5 mt-5 border-bottom">
-        <h1 class="h2">Agencies page module</h1>
+        <h1 class="h2">Question and answer</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
           
           </div>
-          <a href="{{ url('/admin/addagencies')}}" class="btn btn-sm btn-success">
+          <a href="{{ url('/admin/question_and_answer')}}" class="btn btn-sm btn-success">
           <span data-feather="plus-square"></span>
-          Add page module
+          Add question and answer
           </a>
         </div>
       </div>
 
-    	@if(session('pagemodulesuccess'))
+    	@if(session('qesanssavesucc'))
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> {{session('pagemodulesuccess')}}
+          <strong>Success!</strong> {{session('qesanssavesucc')}}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         @endif
 
-        @if(session('updatpmsec'))
+        @if(session('qesansupsucc'))
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> {{session('updatpmsec')}}
+          <strong>Success!</strong> {{session('qesansupsucc')}}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         @endif
 
-        @if(session('pagemoduledelsuccess'))
+        @if(session('qesansdelsucc'))
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> {{session('pagemoduledelsuccess')}}
+          <strong>Success!</strong> {{session('qesansdelsucc')}}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -108,9 +88,8 @@
                             <thead>
                               <tr>
                               <th scope="col">#</th>
-                              <th scope="col">Title</th>
-                              <th scope="col">Descrition</th>
-                              <th scope="col">Image</th>
+                              <th scope="col">Question</th>
+                              <th scope="col">Answer</th>
                               <th scope="col" class="text-center w-25">Action</th>
                               </tr>
                           </thead>
@@ -118,18 +97,17 @@
                           <?php 
                            $x = 0;
                           ?>
-                            @foreach($pagemodules as $pagemodule)
+                            @foreach($fquestions as $ques)
                             <?php $x++ ?>
                               <tr>
                               <th scope="row">{{$x}}</th>
-                              <td>{{$pagemodule->title}}</td>
-                              <td>{!! $pagemodule->description !!}</td>
-                              <td><img src="{{asset('')}}images/pagemodule/{{$pagemodule->image}}" width=150 height=150></td>
+                              <td>{{$ques->question}}</td>
+                              <td>{!! $ques->answer !!}</td>
                               <td class="text-center w-25">
-                                <a href='{{url("/admin/editagencies/{$pagemodule->id}")}}' class="btn btn-sm btn-info mt-1 getpagemoduleinfo">
+                                <a href='{{url("/admin/editquestion_and_answer/{$ques->id}")}}' class="btn btn-sm btn-info mt-1">
                                   <span data-feather="edit"></span> Edit
                                 </a>
-                                <button type="button" class="btn btn-sm btn-danger mt-1 delpagemoduleclass" pagemodule-id="{{$pagemodule->id}}" data-toggle="modal" data-target="#serviceintromoduledel">
+                                <button type="button" class="btn btn-sm btn-danger mt-1 delpagemoduleclass" pagemodule-id="{{$ques->id}}" data-toggle="modal" data-target="#serviceintromoduledel">
                                   <span data-feather="trash"></span> Delete
                                 </button>
                                             
@@ -146,21 +124,10 @@
 									
 						</div>
 						</div>
-					</div><br/>
-          {{$pagemodules->links()}}
+					</div>
 				</div>
-
-
-
-     
-
-     
-
-      
-
-      
-
-    
+          {{$fquestions->links()}}
+	</div>
 						
 					
 	 
@@ -169,6 +136,8 @@
 
 
 
+<!--  end create page module -->
+
 
   <!-- Modal delete page module -->
 
@@ -176,10 +145,10 @@
   <div class="modal fade" id="serviceintromoduledel" tabindex="-1" role="dialog" aria-labelledby="serviceintromoduledel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content rounded-0">
-      <form action="{{ route('pagemoduledelete.submit')}}" method="POST">
+      <form action="{{ route('deletequesans.submit')}}" method="POST">
       @csrf
         <div class="modal-header">
-          <h5 class="modal-title" id="serviceintromoduledel">Delete agencies module</h5>
+          <h5 class="modal-title" id="serviceintromoduledel">Delete question and answer</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -187,7 +156,6 @@
         <div class="modal-body">
           <p>Are you sure delete this?...</P>
           <input type="hidden" id="delpageid" name="delpageid" value="">
-          <input type="hidden" name="redirceturl" value="/admin/agencies">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
@@ -197,9 +165,6 @@
       </div>
     </div>
   </div>
-
-
-<!--  end delete page module -->
 
 @endsection
 
@@ -221,7 +186,23 @@
 
             
 
+            $('.getserviceedit').click(function() {
+    
+            var getceditid = $(this).attr('service-id');
+            var getcedittitle = $(this).attr('servicename-id');
+            var getceditoldimg = $(this).attr('serviceoldimg-id');
 
+            var setoldimage = "{{ asset('')}}images/service/"+getceditoldimg 
+
+            $("#setoldimage").attr("src", setoldimage);
+            
+            $('#oldimg').val(getceditoldimg);
+            $('#stitle').val(getcedittitle);
+          
+            $('#serviceeditid').val(getceditid);
+          
+
+             });
 
           $('.delpagemoduleclass').click(function() {
             

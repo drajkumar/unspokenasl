@@ -21,9 +21,9 @@ class SettingAdminController extends Controller
     public function index()
     {
         $pageintro = Pageintro::where('page_name', 'our-services')->first();
-        $pagemodules = Pagemodule::where('page_name', 'our-services')->orderBy('id', 'DESC')->get();
-        $services = Service::orderBy('id', 'DESC')->get();
-        return view('admin.service.service', compact('pageintro', 'pagemodules', 'services'));
+       // $pagemodules = Pagemodule::where('page_name', 'our-services')->orderBy('id', 'DESC')->get();
+        //$services = Service::orderBy('id', 'DESC')->get();
+        return view('admin.service.service', compact('pageintro'));
     }
 
     public function editpagemodule($id)
@@ -31,6 +31,20 @@ class SettingAdminController extends Controller
       $pagemodule = Pagemodule::find($id);
       
       return view('admin.service.editpagemodule', compact('pagemodule'));
+    }
+
+
+    public function servicepagemoduleview()
+    {   
+        $pagemodules = Pagemodule::where('page_name', 'our-services')->paginate(1);
+        return view('admin.service.servicepagemoduleview', compact('pagemodules'));
+    }
+
+    public function serviceallview()
+    {
+        $services = Service::paginate(10);
+     
+        return view('admin.service.servicesall', compact('services'));
     }
 
 
@@ -56,7 +70,7 @@ class SettingAdminController extends Controller
 
         Service::create($data);
 
-        return redirect('/admin/service')->with('servicecreatesuccess', 'Service successfully Created');
+        return redirect('/admin/serviceallview')->with('servicecreatesuccess', 'Service successfully Created');
 
     }
 
@@ -79,7 +93,7 @@ class SettingAdminController extends Controller
         ];
 
         Service::where('id', $id)->update($data);
-        return redirect('/admin/service')->with("updatservice", "Service is successfuly updated");
+        return redirect('/admin/serviceallview')->with("updatservice", "Service is successfuly updated");
 
      }else{
        
@@ -96,7 +110,7 @@ class SettingAdminController extends Controller
         Service::where('id', $id)->update($data);
         unlink('images/service/'.$oldimage);
         
-         return redirect('/admin/service')->with("updatservice", "Service is successfuly updated");
+         return redirect('/admin/serviceallview')->with("updatservice", "Service is successfuly updated");
      
       }
     }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contactus;
+use App\Models\Pagemodule;
 
 class RequestController extends Controller
 {
@@ -13,6 +15,8 @@ class RequestController extends Controller
 
     public function contactus()
     {
-        return view('frontend.request.contactus');
+        $contactus = Contactus::find(1);
+        $pageintro = Pagemodule::where('page_name', 'contactus')->first();
+        return view('frontend.request.contactus', compact('contactus', 'pageintro'));
     }
 }

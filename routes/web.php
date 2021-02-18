@@ -11,13 +11,15 @@ use App\Http\Controllers\BlogController;
 
 
 
+
 //----- Route for admin ------//
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SettingAdminController;
 use App\Http\Controllers\Admin\CommonPageController;
 use App\Http\Controllers\Admin\ServicefaqagencController;
-
+use App\Http\Controllers\Admin\AboutusadminController;
+use App\Http\Controllers\Admin\ContactusadminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,19 +49,7 @@ Route::get('/faq', [OurserviceController::class, 'faq']);
 
 Route::get('/service/{id}/{title}', [OurserviceController::class, 'servicepagedynamic']);
 
-Route::get('/workers-compensation', [OurserviceController::class, 'workerscompensation']);
 
-Route::get('/medical-interpreting', [OurserviceController::class, 'medicalinterpreting']);
-
-Route::get('/mental-health-interpreting', [OurserviceController::class, 'mentalhealthinterpreting']);
-
-Route::get('/legal-interpreting', [OurserviceController::class, 'legalinterpreting']);
-
-Route::get('/educational-k-12-interpreting', [OurserviceController::class, 'educationalinterpreting']);
-
-Route::get('/business-interpreting', [OurserviceController::class, 'businessinterpreting']);
-
-Route::get('/conference-interpreting', [OurserviceController::class, 'conferenceinterpreting']);
 
 //----- Request ----//
 
@@ -77,10 +67,7 @@ Route::get('/unspoken-thoughts', [BlogController::class, 'blog']);
 
 Auth::routes();
 
-Route::get('admin/',function() {
-    return Redirect::to('/admin/login');
 
-}); 
 
 Route::get('admin/home', [HomeController::class, 'index'])->name('home');
 
@@ -90,7 +77,11 @@ Route::get('admin/addhomemodule', [HomeController::class, 'addhomemodule']);
 
 Route::get('admin/slideredit/{id}', [HomeController::class, 'editslider']);
 
+Route::get('admin/homepagemodule', [HomeController::class, 'viewhomepagemodule']);
+
 Route::get('admin/homemodule/{id}', [HomeController::class, 'edithomepagemodule']);
+
+Route::get('admin/clientsliderview', [HomeController::class, 'clientsliderview']);
 
 Route::post('admin/cslider', [HomeController::class, 'storeclientslider'])->name('storeclientslider.submit');
 
@@ -99,6 +90,8 @@ Route::post('admin/cslideredit', [HomeController::class, 'editclientimg'])->name
 Route::post('admin/csliderdelete', [HomeController::class, 'deleteclintsl'])->name('deleteclintsl.submit');
 
 Route::get('admin/service', [SettingAdminController::class, 'index'])->name('service');
+
+Route::get('admin/servicepagemoduleview', [SettingAdminController::class, 'servicepagemoduleview']);
 
 Route::get('admin/editpagemodule/{id}', [SettingAdminController::class, 'editpagemodule']);
 
@@ -109,6 +102,8 @@ Route::post('admin/storepagemodule', [CommonPageController::class, 'storepagemod
 Route::post('admin/updatepagemodule', [CommonPageController::class, 'editpagemodule'])->name('editpagemodule.submit');
 
 Route::post('admin/pagemoduledelete', [CommonPageController::class, 'deletepagemodule'])->name('pagemoduledelete.submit');
+
+Route::get('admin/serviceallview', [SettingAdminController::class, 'serviceallview']);
 
 Route::post('admin/service', [SettingAdminController::class, 'storeservice'])->name('service.submit');
 
@@ -140,6 +135,8 @@ Route::get('admin/editagencies/{id}', [ServicefaqagencController::class, 'update
 
 Route::get('admin/faq', [ServicefaqagencController::class, 'faqview']);
 
+Route::get('admin/questionandanswerview', [ServicefaqagencController::class, 'quesandansview']);
+
 Route::get('admin/question_and_answer', [ServicefaqagencController::class, 'queans']);
 
 Route::post('admin/storequestion', [ServicefaqagencController::class, 'storequeans'])->name('storequeans.submit');
@@ -150,4 +147,20 @@ Route::post('admin/updatequestion', [ServicefaqagencController::class, 'updatequ
 
 Route::post('admin/removequestion', [ServicefaqagencController::class, 'deletequesans'])->name('deletequesans.submit');
 
+Route::get('admin/aboutus', [AboutusadminController::class, 'viewaboutus']);
 
+Route::post('admin/updateaboutus', [AboutusadminController::class, 'editaboutus'])->name('editaboutus.submit');
+
+Route::get('admin/contactus', [ContactusadminController::class, 'contactusview']);
+
+Route::post('admin/contactus', [ContactusadminController::class, 'storecontactinfo'])->name('storecontactinfo.submit');
+
+Route::post('admin/contactusimage', [ContactusadminController::class, 'editcontactmodule'])->name('editcontactmodule.submit');
+
+Route::get('admin/sociallink', [ContactusadminController::class, 'sociallink']);
+
+Route::post('admin/editsociallink', [ContactusadminController::class, 'updatedsociallink'])->name('updatedsociallink.submit');
+
+Route::get('admin/',function() {
+    return Redirect::to('/admin/login');
+}); 

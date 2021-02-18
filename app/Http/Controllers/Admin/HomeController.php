@@ -26,10 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $slider = Pagemodule::where('page_name', 'slider')->orderBy('id', 'DESC')->get();
-        $pagemodule = Pagemodule::where('page_name', 'home')->where('id', '!=', 15)->orderBy('id', 'DESC')->get();
-        $cslider = Clienttrust::orderBy('id', 'DESC')->get();
-        return view('admin.home', compact('slider', 'pagemodule', 'cslider'));
+        $slider = Pagemodule::where('page_name', 'slider')->paginate(10);
+        //$pagemodule = Pagemodule::where('page_name', 'home')->where('id', '!=', 15)->paginate(20);
+        //$cslider = Clienttrust::orderBy('id', 'DESC')->paginate(20);
+        return view('admin.home', compact('slider'));
     }
 
     public function addslider()
@@ -43,6 +43,13 @@ class HomeController extends Controller
       return view('admin.home.slideredit', compact('slider'));
     }
 
+    public function viewhomepagemodule()
+    {
+       
+         $pagemodule = Pagemodule::where('page_name', 'home')->where('id', '!=', 15)->paginate(10);
+          return view('admin.home.viewhomemodule', compact('pagemodule'));
+    }
+
     public function addhomemodule()
     {
         return view('admin.home.addhomemodule');
@@ -51,6 +58,12 @@ class HomeController extends Controller
     public function edithomepagemodule($id){
      $slider = Pagemodule::find($id);
      return view('admin.home.edithomepagemodule', compact('slider'));
+    }
+
+    public function clientsliderview()
+    {   
+         $cslider = Clienttrust::paginate(10);
+         return view('admin.home.clientsliderview', compact('cslider'));
     }
 
     public function storeclientslider(Request $request)
@@ -68,7 +81,7 @@ class HomeController extends Controller
         ];
         Clienttrust::create($data);
 
-        return redirect('/admin/home')->with('csliderstoresuccess', 'Client slider Successfully Saved!');
+        return redirect('/admin/clientsliderview')->with('csliderstoresuccess', 'Client slider Successfully Saved!');
     }
 
     public function editclientimg(Request $request)
@@ -90,7 +103,7 @@ class HomeController extends Controller
         ];
         Clienttrust::where('id', $id)->update($data);
         unlink('images/home/'.$oldimg);
-        return redirect('/admin/home')->with('cslidereditsuccess', 'Client slider Successfully Updated!');
+        return redirect('/admin/clientsliderview')->with('cslidereditsuccess', 'Client slider Successfully Updated!');
 
     }
 
@@ -101,6 +114,6 @@ class HomeController extends Controller
       $delimg = $image->image;
       Clienttrust::where('id', $id)->delete($id);
       unlink('images/home/'.$delimg);
-       return redirect('/admin/home')->with('csliderdeletesuccess', 'Client slider Successfully deleted!');
+       return redirect('/admin/clientsliderview')->with('csliderdeletesuccess', 'Client slider Successfully deleted!');
     }
 }

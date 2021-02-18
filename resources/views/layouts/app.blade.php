@@ -90,6 +90,9 @@
                 <li><a class="dropdown-item" href="{{ url('/admin/service')}}"><span data-feather="settings"></span> Service</a></li>
                 <li><a class="dropdown-item" href="{{ url('/admin/agencies')}}"><span data-feather="layout"></span> Agencies</a></li>
                 <li><a class="dropdown-item" href="{{ url('/admin/faq')}}"><span data-feather="layout"></span> Faq</a></li>
+                <li><a class="dropdown-item" href="{{ url('/admin/aboutus')}}"><span data-feather="layout"></span> About us</a></li>
+                <li><a class="dropdown-item" href="{{ url('/admin/contactus')}}"><span data-feather="mail"></span> Contact us</a></li>
+                <li><a class="dropdown-item" href="{{ url('/admin/sociallink')}}"><span data-feather="layout"></span> Social Links</a></li>
                   <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                 </ul>

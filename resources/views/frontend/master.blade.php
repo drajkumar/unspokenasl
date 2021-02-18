@@ -52,13 +52,16 @@
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ url('') }}">ASL INTERPRETING</a>
 						   <!-- RD Navbar Dropdown-->
 							<ul class="rd-menu rd-navbar-dropdown">
-							  <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ url('/workers-compensation') }}">Worker&#8217;s Compensation</a></li>
-							  <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ url('/medical-interpreting') }}">Medical Interpreting</a></li>
-							  <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ url('/mental-health-interpreting') }}">Mental Health Interpreting</a></li>
-							  <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ url('/legal-interpreting') }}">Legal Interpreting </a></li>
-							  <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ url('/educational-k-12-interpreting') }}">Educational Interpreting </a></li>
-							  <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ url('/business-interpreting') }}"> Business Interpreting</a></li>
-							  <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ url('/conference-interpreting') }}">Conference Interpreting</a></li>
+               @foreach($headerData as $data)
+               @php
+                $name = str_replace(' ', '-', $data->name);
+               @endphp
+                      
+                 <li class="rd-dropdown-item"><a class="rd-dropdown-link" href='{{ url("/service/{$data->id}/{$name}") }}'>{{$data->name}}</a></li>     
+                       
+               @endforeach
+							  
+
 							</ul>
 						  </li>
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ url('/white-labeling') }}">AGENCIES</a></li>
@@ -82,6 +85,7 @@
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="{{ url('/unspoken-thoughts') }}">BLOG</a>
                       </li>
+                     
                     </ul>
                   </div>
                 </div>
@@ -105,17 +109,18 @@
                   <div class="row row-50">
                     <div class="col-lg-4">
                       <div class="inset-right-1">
+                      
                         <h4>About Us</h4>
-                        <p>Unspoken Language Services is a boutique agency providing exclusive on-site American Sign Language interpreting services. We focus on servicing Deaf and Hard of Hearing consumers with the highest level of interpreting quality and cultural competence. We know your agency list was limitless, but you chose our passion-driven company to serve your communication needs best.</p>
+                        <p>{!! $aboutdata->description !!}</p>
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-5 col-lg-4">
                       <div class="box-1">
                         <h4>Contact Us</h4>
                         <ul class="list-sm">
-                          <li class="object-inline"><span class="icon icon-md mdi mdi-map-marker text-gray-700"></span><span class="link-default" href="#">1370 Valley Vista Drive <br> Suite 200 <br>Diamond Bar, CA 91765 </span></li>
-                          <li class="object-inline"><span class="icon icon-md mdi mdi-phone text-gray-700"></span><a class="link-default" href="tel:1(888) 280 0751">1(888) 280.0751</a></li>
-                          <li class="object-inline"><span class="icon icon-md mdi mdi-email text-gray-700"></span><a class="link-default" href="mailto:services@unspokensigns.com">services@unspokensigns.com</a></li>
+                          <li class="object-inline"><span class="icon icon-md mdi mdi-map-marker text-gray-700"></span><span class="link-default" href="#">{!! $contactus->address !!} </span></li>
+                          <li class="object-inline"><span class="icon icon-md mdi mdi-phone text-gray-700"></span><a class="link-default" href="tel:1(888) 280 0751">{{$contactus->phone}}</a></li>
+                          <li class="object-inline"><span class="icon icon-md mdi mdi-email text-gray-700"></span><a class="link-default" href="mailto:services@unspokensigns.com">{{$contactus->email}}</a></li>
                         </ul>
                       </div>
                     </div>
@@ -125,9 +130,9 @@
                       <!-- Social Icon-->
                      <div>
                           <ul class="list-inline list-inline-md">
-                            <li><a class="icon icon-sm link-default mdi mdi-linkedin" href="https://www.linkedin.com/in/unspokeninc/" target="_blank"></a></li>
-                            <li><a class="icon icon-sm link-default mdi mdi-twitter" href="https://twitter.com/Unspoken_Inc" target="_blank"></a></li>
-							<li><a class="icon icon-sm link-default mdi mdi-facebook" href="https://www.facebook.com/officiallyunspoken" target="_blank"></a></li>
+                            <li><a class="icon icon-sm link-default mdi mdi-linkedin" href="{{$sociallink->linkedin}}" target="_blank"></a></li>
+                            <li><a class="icon icon-sm link-default mdi mdi-twitter" href="{{$sociallink->twitter}}" target="_blank"></a></li>
+							<li><a class="icon icon-sm link-default mdi mdi-facebook" href="{{$sociallink->facebook}}" target="_blank"></a></li>
                            
                           </ul>
                         </div>

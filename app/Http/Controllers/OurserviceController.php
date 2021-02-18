@@ -38,55 +38,13 @@ class OurserviceController extends Controller
     public function servicepagedynamic($id, $title){
 
         $service = Service::find($id);
-      return view('frontend.services.pages', compact('service'));
+        if(empty($service)){
+         return redirect('/');
+        }else{
+         return view('frontend.services.pages', compact('service')); 
+        }
+      
     }
-
-
-
-    public function medicalinterpreting()
-    { 
-          $service = Service::find(1);
-
-        return view('frontend.services.medical-interpreting', compact('service'));
-    }
-
-    public function mentalhealthinterpreting()
-    {
-        $service = Service::find(2);
-        return view('frontend.services.mental-health-interpreting', compact('service'));
-    }
-
-    public function legalinterpreting()
-    {
-        $service = Service::find(3);
-        return view('frontend.services.legal-interpreting', compact('service'));
-    }
-
-    public function educationalinterpreting()
-    {
-        $service = Service::find(4);
-        return view('frontend.services.educational-k-12-interpreting', compact('service'));
-    }
-
-    public function businessinterpreting()
-    {
-        $service = Service::find(5);
-        return view('frontend.services.business-interpreting', compact('service'));
-    }
-
-    public function conferenceinterpreting()
-    {
-        $service = Service::find(6);
-        return view('frontend.services.conference-interpreting', compact('service'));
-    }
-
-    public function workerscompensation()
-    {
-        $service = Service::find(7);
-        return view('frontend.services.workers-compensation', compact('service'));
-    }
-
-
 
 
 }

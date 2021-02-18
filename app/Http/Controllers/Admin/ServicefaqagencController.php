@@ -17,7 +17,7 @@ class ServicefaqagencController extends Controller
     public function agenciesview()
     {
        
-        $pagemodules = Pagemodule::where('page_name', 'agencies')->get();
+        $pagemodules = Pagemodule::where('page_name', 'agencies')->paginate(10);
         return view('admin.service.agencies', compact('pagemodules'));
     }
 
@@ -36,13 +36,18 @@ class ServicefaqagencController extends Controller
     public function faqview()
     {
         $pageintro = Pagemodule::where('page_name', 'faq')->first();
-        $fquestions = Fquestion::get();
-        return view('admin.service.faq', compact('pageintro', 'fquestions'));
+        return view('admin.service.faq', compact('pageintro'));
     }
 
     public function queans()
     {
         return view('admin.service.quesans');
+    }
+
+    public function quesandansview()
+    {
+        $fquestions = Fquestion::paginate(10);
+        return view('admin.service.quesandansview', compact('fquestions'));
     }
 
     public function storequeans(Request $request)
@@ -58,7 +63,7 @@ class ServicefaqagencController extends Controller
         ];
 
         Fquestion::create($data);
-        return redirect('admin/faq')->with('qesanssavesucc', 'Question and answer successfully Created');
+        return redirect('admin/questionandanswerview')->with('qesanssavesucc', 'Question and answer successfully Created');
     }
 
     public function queseditview($id)
@@ -82,13 +87,13 @@ class ServicefaqagencController extends Controller
         ];
 
         Fquestion::where('id', $id)->update($data);
-        return redirect('admin/faq')->with('qesansupsucc', 'Question and answer successfully updated');
+        return redirect('admin/questionandanswerview')->with('qesansupsucc', 'Question and answer successfully updated');
     }
 
     public function deletequesans(Request $request)
     {
       $id = $request->delpageid;
       Fquestion::where('id', $id)->delete();
-      return redirect('/admin/faq')->with('qesansdelsucc', 'Question and answer successfully deleted');
+      return redirect('/admin/questionandanswerview')->with('qesansdelsucc', 'Question and answer successfully deleted');
     }
 }

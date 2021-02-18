@@ -11,7 +11,7 @@
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 			<h2 class="h2">Edit Home page module - {{$slider->title}}</h2>
 			<div class="btn-toolbar mb-2 mb-md-0">
-			  <a href='{{url("/admin/home")}}' class="btn btn-sm btn-outline-secondary">
+			  <a href='{{url("/admin/homepagemodule")}}' class="btn btn-sm btn-outline-secondary">
               <span data-feather="arrow-left"></span>
               Back &nbsp;&nbsp;
             </a>
@@ -67,7 +67,7 @@
         
         <input type="hidden" name="pageid" value="{{$slider->id}}">
         <input type="hidden" name="oldimg" value="{{$slider->image}}">
-        <input type="hidden" name="redirceturl" value="/admin/home">
+        <input type="hidden" name="redirceturl" value="/admin/homepagemodule">
       </div>
 
       <p class="ml-4">posted images:</p>

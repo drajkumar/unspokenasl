@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2021 at 11:47 PM
+-- Generation Time: Feb 18, 2021 at 09:53 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -52,6 +52,31 @@ INSERT INTO `client_truests` (`id`, `image`, `created_at`, `updated_at`) VALUES
 (13, '6019be6a7e24b.png', '2021-02-02 14:41:43', '2021-02-02 15:04:42'),
 (15, '6019c15c10e89.png', '2021-02-02 15:17:16', '2021-02-02 15:17:16'),
 (16, '6019c175aeb64.png', '2021-02-02 15:17:41', '2021-02-02 15:17:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactus`
+--
+
+CREATE TABLE `contactus` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `office_hour` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `need_service` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `map` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contactus`
+--
+
+INSERT INTO `contactus` (`id`, `office_hour`, `need_service`, `email`, `phone`, `address`, `map`, `created_at`, `updated_at`) VALUES
+(1, 'Monday-Friday: 8am-5pm PST', 'After Hours, Weekends, or Holidays?  Contact Us Below!', 'services@unspokensigns.com', '1.888.280.0751', '<span style=\"color: rgb(116, 117, 127); font-family: \"Work Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px; text-align: left;\">1370 Valley Vista Drive</span><br style=\"color: rgb(116, 117, 127); font-family: \"Work Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px; text-align: left;\"><span style=\"color: rgb(116, 117, 127); font-family: \"Work Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px; text-align: left;\">Suite 200</span><br style=\"color: rgb(116, 117, 127); font-family: \"Work Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px; text-align: left;\"><span style=\"color: rgb(116, 117, 127); font-family: \"Work Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px; text-align: left;\">Diamond Bar, CA 91765</span>', '<iframe src=\"https://www.google.com/maps?q=1370%20Valley%20Vista%20Drive%0ASuite%20200%0ADiamond%20Bar%2C%20CA%2091765&amp;output=embed&amp;hl=en&amp;z=14\" frameborder=\"0\" class=\"wpcw-widget-contact-map\"></iframe>', '2021-02-18 13:28:05', '2021-02-18 13:42:35');
 
 -- --------------------------------------------------------
 
@@ -124,7 +149,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2021_01_27_080518_create_service_modules_table', 2),
 (8, '2021_01_27_080619_create_service_settings_table', 2),
 (9, '2021_02_02_200921_create_client_truests_table', 3),
-(10, '2021_02_14_212725_create_fquestions_table', 4);
+(10, '2021_02_14_212725_create_fquestions_table', 4),
+(11, '2021_02_18_185423_create_contactus_table', 5),
+(12, '2021_02_18_202545_create_sociallinks_table', 6);
 
 -- --------------------------------------------------------
 
@@ -146,7 +173,7 @@ CREATE TABLE `pageintro_text` (
 --
 
 INSERT INTO `pageintro_text` (`id`, `page_name`, `title`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'our-services', 'American Sign Language (ASL) Interpreting', '<p>Unspoken Language Services is here to ease the language barrier by providing exclusive American Sign Language Interpreting and Transliteration services. We mend the communication challenge amongst an array of hearing calibers while maintaining the utmost professionalism and competence.</p><p>\r\n                                </p>', '2021-01-12 09:27:56', '2021-01-29 12:05:43');
+(1, 'our-services', 'American Sign Language (ASL) Interpreting', '<p>Unspoken Language Services is here to ease the language barrier by providing exclusive American Sign Language Interpreting and Transliteration services. We mend the communication challenge amongst an array of hearing calibers while maintaining the utmost professionalism and competence.</p><p>\r\n                                </p>', '2021-01-12 09:27:56', '2021-02-17 15:22:00');
 
 -- --------------------------------------------------------
 
@@ -170,15 +197,17 @@ CREATE TABLE `pagemodules` (
 --
 
 INSERT INTO `pagemodules` (`id`, `page_name`, `title`, `description`, `url`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'our-services', 'What is ASL?', '<p class=\"wow-outer\" style=\"margin: 30px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">American Sign Language is an unspoken visual language used predominately in the United States and parts of Canada. The language uses shapes, placement, and movements of the hands, along with facial expressions and body movements to convey information.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".1s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.1s;\">Much like the numerous spoken languages around the world, ASL has its own syntax structure and distinctive rules of grammar. As a natural language, sign language is constantly developing and evolving over time.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".1s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.1s;\">Through the use of this visual complex language, Unspoken offers premium American Sign Language interpreting services that make it easier for you and your deaf consumer to freely exchange knowledge and ideas in any environment.</span></p>', '', '60115d718f598.jpg', '2021-01-27 06:32:49', '2021-01-27 06:32:49'),
-(9, 'slider', 'Why Us?', 'We are more than just another mainstream language agency providing interpreting services.', 'http://127.0.0.1:8000/the-unspoken-promise', '601947229fc0c.jpeg', '2021-02-02 06:35:46', '2021-02-02 13:34:51'),
+(1, 'our-services', 'What is ASL?', '<p class=\"wow-outer\" style=\"margin: 30px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: \"Work Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">American Sign Language is an unspoken visual language used predominately in the United States and parts of Canada. The language uses shapes, placement, and movements of the hands, along with facial expressions and body movements to convey information.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: \"Work Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".1s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.1s;\">Much like the numerous spoken languages around the world, ASL has its own syntax structure and distinctive rules of grammar. As a natural language, sign language is constantly developing and evolving over time.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: \"Work Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".1s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.1s;\">Through the use of this visual complex language, Unspoken offers premium American Sign Language interpreting services that make it easier for you and your deaf consumer to freely exchange knowledge and ideas in any environment.</span></p>', '', '60115d718f598.jpg', '2021-01-27 06:32:49', '2021-02-17 15:31:17'),
+(9, 'slider', 'Why Us?', 'We are more than just another mainstream language agency providing interpreting services.', 'http://127.0.0.1:8000/the-unspoken-promise', '601947229fc0c.jpeg', '2021-02-02 06:35:46', '2021-02-17 13:59:20'),
 (10, 'slider', 'Request Services', 'Request Services Let us carefully connect you with the right on-site interpreter for your company\'s needs.', 'http://127.0.0.1:8000/request-services', '6019526baa240.jpeg', '2021-02-02 06:38:40', '2021-02-02 15:27:29'),
-(13, 'home', 'Why Us?', '<div>We are more than just another mainstream language agency providing interpreting services. We are a boutique company, owned and operated by American Sign Language interpreters. We know your agency list was limitless, but you chose our passion-driven company to serve your communication needs best.</div><div><br></div><div>With Unspoken Language Services, you speak directly to our team, not an answering service. Providing committed, personable, high quality, and in the moment communication access to our consumers and clients are paramount, guaranteeing a humanistic experience.</div>', 'http://127.0.0.1:8000/the-unspoken-promise', '6019af6b8fac0.jpeg', '2021-02-02 13:38:08', '2021-02-02 14:00:52'),
+(13, 'home', 'Why Us?', '<div>We are more than just another mainstream language agency providing interpreting services. We are a boutique company, owned and operated by American Sign Language interpreters. We know your agency list was limitless, but you chose our passion-driven company to serve your communication needs best.</div><div><br></div><div>With Unspoken Language Services, you speak directly to our team, not an answering service. Providing committed, personable, high quality, and in the moment communication access to our consumers and clients are paramount, guaranteeing a humanistic experience.</div>', 'http://127.0.0.1:8000/the-unspoken-promise', '6019af6b8fac0.jpeg', '2021-02-02 13:38:08', '2021-02-17 14:18:28'),
 (14, 'home', 'Our Services', '<div>Unspoken\'s interpreters have specialized and extensive training in a variety of settings including, but not limited to: Medical, Worker\'s Compensation, Mental Health, Legal, Business, Conference, and Education. We are ready to cater to your specific interpreting needs.</div><div><br></div><div>Our goal is to use American Sign Language and Transliteration to better facilitate communication amongst an array of hearing calibers while maintaining the utmost professionalism and competence.</div>', 'http://127.0.0.1:8000/our-services', '6019aa63dbe9e.jpeg', '2021-02-02 13:39:15', '2021-02-02 13:39:15'),
 (15, 'home', 'Request Services', '<div>Let us carefully connect you with the right on-site interpreter for your company\'s needs. Our extensively trained and certified interpreters each have various interpreting styles and specialized skills that tailor to your request.</div><div><br></div><div>Contact us today to bring a humanistic approach to your ASL interpreting experience!</div>', 'http://127.0.0.1:8000/request-services', '6019aad8e1732.jpeg', '2021-02-02 13:41:12', '2021-02-02 13:41:12'),
-(19, 'agencies', '\"We Help Agencies Make Language Access Easier\"', '<div>Translation and interpreting agencies across the country struggle daily with meeting their deaf consumers\' language needs and serving them with quality interpreters that deliver brand loyalty. Unspoken Language Services was built to partner with you as an agency to provide on-site Sign Language interpreting support.</div><div><br></div><div>Our team seamlessly integrates with your agency’s processes and has the nationwide capacity to accommodate your deaf consumer as needed. Whether your agency needs an interpreter for a routine medical appointment or needs to arrange a team of interpreters for an upcoming conference, we can help.</div><div><br></div><div>Learn more about Unspoken’s White Labeling American Sign Interpreting Services, and the results we’ve delivered to our partnered agencies</div>', '', '60298096a51ef.jpeg', '2021-02-14 13:57:10', '2021-02-14 14:09:49'),
-(20, 'agencies', '\"We Help Agencies Make Language Access Easier\"', '<div>Translation and interpreting agencies across the country struggle daily with meeting their deaf consumers\' language needs and serving them with quality interpreters that deliver brand loyalty. Unspoken Language Services was built to partner with you as an agency to provide on-site Sign Language interpreting support.</div><div><br></div><div>Our team seamlessly integrates with your agency’s processes and has the nationwide capacity to accommodate your deaf consumer as needed. Whether your agency needs an interpreter for a routine medical appointment or needs to arrange a team of interpreters for an upcoming conference, we can help.</div><div><br></div><div>Learn more about Unspoken’s White Labeling American Sign Interpreting Services, and the results we’ve delivered to our partnered agencies.</div>', '', '602980ebce25e.jpeg', '2021-02-14 13:58:35', '2021-02-14 13:58:35'),
-(22, 'faq', 'Frequently Asked Questions (FAQ)', '<span style=\"color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\">Questions about the interpreting profession or about Unspoken? Find out here!&nbsp;</span>', '', '602993093543d.jpeg', '2021-02-14 14:17:44', '2021-02-14 15:15:53');
+(19, 'agencies', '\"We Help Agencies Make Language Access Easier\"', '<div>Translation and interpreting agencies across the country struggle daily with meeting their deaf consumers\' language needs and serving them with quality interpreters that deliver brand loyalty. Unspoken Language Services was built to partner with you as an agency to provide on-site Sign Language interpreting support.</div><div><br></div><div>Our team seamlessly integrates with your agency’s processes and has the nationwide capacity to accommodate your deaf consumer as needed. Whether your agency needs an interpreter for a routine medical appointment or needs to arrange a team of interpreters for an upcoming conference, we can help.</div><div><br></div><div>Learn more about Unspoken’s White Labeling American Sign Interpreting Services, and the results we’ve delivered to our partnered agencies</div>', '', '60298096a51ef.jpeg', '2021-02-14 13:57:10', '2021-02-14 17:06:40'),
+(20, 'agencies', '\"We Help Agencies Make Language Access Easier\"', '<div>Translation and interpreting agencies across the country struggle daily with meeting their deaf consumers\' language needs and serving them with quality interpreters that deliver brand loyalty. Unspoken Language Services was built to partner with you as an agency to provide on-site Sign Language interpreting support.</div><div><br></div><div>Our team seamlessly integrates with your agency’s processes and has the nationwide capacity to accommodate your deaf consumer as needed. Whether your agency needs an interpreter for a routine medical appointment or needs to arrange a team of interpreters for an upcoming conference, we can help.</div><div><br></div><div>Learn more about Unspoken’s White Labeling American Sign Interpreting Services, and the results we’ve delivered to our partnered agencies.</div>', '', '602980ebce25e.jpeg', '2021-02-14 13:58:35', '2021-02-14 17:06:49'),
+(22, 'faq', 'Frequently Asked Questions (FAQ)', '<span style=\"color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\">Questions about the interpreting profession or about Unspoken? Find out here!&nbsp;</span>', '', '602993093543d.jpeg', '2021-02-14 14:17:44', '2021-02-14 15:15:53'),
+(27, 'aboutus', '', '<span style=\"color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\">Unspoken Language Services is a boutique agency providing exclusive on-site American Sign Language interpreting services. We focus on servicing Deaf and Hard of Hearing consumers with the highest level of interpreting quality and cultural competence. We know your agency list was limitless, but you chose our passion-driven company to serve your communication needs best.</span>', '', '602e60c9d3198.jpeg', '2021-02-18 06:42:49', '2021-02-18 07:02:16'),
+(28, 'contactus', '', NULL, NULL, '602ec93d09f54.jpg', NULL, '2021-02-18 14:08:29');
 
 -- --------------------------------------------------------
 
@@ -213,7 +242,7 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `token`, `name`, `description`, `image`, `created_at`, `updated_at`) VALUES
-(1, '94a35ace8ed7a2ec31b01e1a65075956', 'Medical Interpreting', '', '6011d522f04e0.jpeg', '2021-01-27 15:03:30', '2021-01-27 15:03:30'),
+(1, '94a35ace8ed7a2ec31b01e1a65075956', 'Medical Interpreting', '', '6011d522f04e0.jpeg', '2021-01-27 15:03:30', '2021-02-17 15:41:28'),
 (2, '28b2eca726f8ec34ed76958e19739232', 'Mental Health Interpreting', '', '6011d56a89eec.jpeg', '2021-01-27 15:04:42', '2021-01-27 15:04:42'),
 (3, 'a5e8431f8abe3ffe0c84f5629b2a1751', 'Legal Interpreting', '', '6011d6e60a07d.jpeg', '2021-01-27 15:11:02', '2021-01-27 15:11:02'),
 (4, 'f177bb22df14f2346fe0c89b7606557d', 'Educational Interpreting', '', '6011d73a482a7.jpeg', '2021-01-27 15:12:26', '2021-01-27 15:12:26'),
@@ -243,7 +272,7 @@ CREATE TABLE `service_modules` (
 --
 
 INSERT INTO `service_modules` (`id`, `services_id`, `stoken`, `title`, `description`, `image`, `created_at`, `updated_at`) VALUES
-(1, 1, '', 'Medical Interpreting', '<p class=\"wow-outer\" style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">Healthcare has a culture of its own: a language with special terminology most laypersons can not understand without further explanation.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">Certified Medical Interpreters are intimately familiar with medical terminology and specialize in the communication of difficult concepts to deaf patients.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">Our Medical Interpreters not only arrive to your medical facility prepared to work with a specific patient, but they have further prepared by researching the case as appropriate.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">All medical settings are sensitive; whether inpatient, outpatient, or a routine medical appointment, our interpreters are flexible and ready to adapt to a less than ideal interpreting environment.</span></p>', '6011f32fadd29.jpeg', '2021-01-27 17:11:43', '2021-01-28 04:03:49'),
+(1, 1, '', 'Medical Interpreting', '<p class=\"wow-outer\" style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">Healthcare has a culture of its own: a language with special terminology most laypersons can not understand without further explanation.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">Certified Medical Interpreters are intimately familiar with medical terminology and specialize in the communication of difficult concepts to deaf patients.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">Our Medical Interpreters not only arrive to your medical facility prepared to work with a specific patient, but they have further prepared by researching the case as appropriate.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">All medical settings are sensitive; whether inpatient, outpatient, or a routine medical appointment, our interpreters are flexible and ready to adapt to a less than ideal interpreting environment.</span></p>', '6011f32fadd29.jpeg', '2021-01-27 17:11:43', '2021-02-17 15:40:47'),
 (3, 2, '', 'Mental Health Interpreting', '<p class=\"wow-outer\" style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">Mental health and well-being is an important aspect of our overall health. Receiving effective communication during mental health healing is just as significant.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">Qualified Mental Health Care Interpreters understand the professional boundaries involved in such a delicate setting. Our Mental Health Care interpreters are knowledgeable and trained to set clear boundaries between their obligation to relay communication and their human desire to help individuals in a compromised mental state.</span></p>', '6012ad7456a79.jpeg', '2021-01-28 06:26:28', '2021-01-28 06:26:28'),
 (4, 2, '', 'Mental Health Interpreting', '<span style=\"color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\">Unspoken Words Language Services is pleased to have qualified Mental Health Care Interpreters in your area. We work closely with mental health care service providers to assist in the diagnosis process and have experience with treating a variety of mental disorders.</span>', '6012ad8cc78ec.jpeg', '2021-01-28 06:26:52', '2021-01-28 06:26:52'),
 (5, 3, '', 'Legal Interpreting', '<p class=\"wow-outer\" style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">American justice system a threatening and difficult place for those who are deaf and solely rely on a visual language, ASL, as their main form of communication. Whether the Deaf or Deaf/Blind are involved at a crime scene, at a courthouse, in a law office, or incarcerated, a great injustice and disservice occurs when appropriate accommodations are not provided.</span></p><p class=\"wow-outer\" style=\"margin: 14px 0px 0px; position: relative; overflow: hidden; color: rgb(116, 117, 127); font-family: &quot;Work Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.48px;\"><span class=\"wow slideInDown\" data-wow-delay=\".05s\" style=\"animation-name: slideInDown; backface-visibility: hidden; display: block; visibility: visible; animation-delay: 0.05s;\">Any situation where a deaf person is involved in legal proceedings, a highly qualified Legal Interpreter is the best approach in dissolving the communication hurdle.</span></p>', '6012ae9c33634.jpeg', '2021-01-28 06:31:24', '2021-01-28 06:31:24'),
@@ -313,6 +342,28 @@ INSERT INTO `service_setting` (`id`, `services_id`, `stoken`, `title`, `image`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sociallinks`
+--
+
+CREATE TABLE `sociallinks` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sociallinks`
+--
+
+INSERT INTO `sociallinks` (`id`, `linkedin`, `twitter`, `facebook`, `created_at`, `updated_at`) VALUES
+(1, 'https://www.linkedin.com/in/unspokeninc', 'https://twitter.com/Unspoken_Inc', 'https://www.facebook.com/officiallyunspoken', '2021-02-16 20:29:38', '2021-02-18 14:52:40');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -343,6 +394,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 -- Indexes for table `client_truests`
 --
 ALTER TABLE `client_truests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contactus`
+--
+ALTER TABLE `contactus`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -401,6 +458,12 @@ ALTER TABLE `service_setting`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sociallinks`
+--
+ALTER TABLE `sociallinks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -415,7 +478,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `client_truests`
 --
 ALTER TABLE `client_truests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `contactus`
+--
+ALTER TABLE `contactus`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -427,13 +496,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `fquestions`
 --
 ALTER TABLE `fquestions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `pageintro_text`
@@ -445,25 +514,31 @@ ALTER TABLE `pageintro_text`
 -- AUTO_INCREMENT for table `pagemodules`
 --
 ALTER TABLE `pagemodules`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `service_modules`
 --
 ALTER TABLE `service_modules`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `service_setting`
 --
 ALTER TABLE `service_setting`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `sociallinks`
+--
+ALTER TABLE `sociallinks`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

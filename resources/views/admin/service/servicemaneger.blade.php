@@ -14,7 +14,7 @@
         <h1 class="h2">Service module for {{$services->name}}</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
-            <a href="{{url('/admin/service')}}" class="btn btn-sm btn-outline-secondary">
+            <a href="{{url('/admin/serviceallview')}}" class="btn btn-sm btn-outline-secondary">
               <span data-feather="arrow-left"></span>
               Back &nbsp;&nbsp;
             </a>

@@ -66,7 +66,7 @@
         </div>
         
  
-        <input type="hidden" name="redirceturl" value="/admin/home">
+        <input type="hidden" name="redirceturl" value="/admin/homepagemodule">
         <input type="hidden" name="pagename" value="home">
       </div>
 

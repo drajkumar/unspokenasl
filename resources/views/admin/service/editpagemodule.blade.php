@@ -14,7 +14,7 @@
 			<div class="btn-toolbar mb-2 mb-md-0">
 		
 			 
-			  <a href="{{url('/admin/service')}}" class="btn btn-sm btn-outline-secondary">
+			  <a href="{{url('/admin/servicepagemoduleview')}}" class="btn btn-sm btn-outline-secondary">
 				<span data-feather="arrow-left"></span>
 				Back &nbsp;&nbsp;
 			  </a>
@@ -64,7 +64,7 @@
           <input type="file" id="customFile" name="image">
          
         </div>
-        <input type="hidden" name="redirceturl" value="/admin/service">
+        <input type="hidden" name="redirceturl" value="/admin/servicepagemoduleview">
 
         <input type="hidden" id="pageid" name="pageid" value="{{$pagemodule->id}}">
         <input type="hidden" id="oldimg" name="oldimg" value="{{$pagemodule->image}}">
