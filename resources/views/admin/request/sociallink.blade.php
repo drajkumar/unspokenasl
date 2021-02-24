@@ -69,8 +69,8 @@
                         <tr>
                         <th scope="col" class="text-center">#</th>
                         <th scope="col" class="text-center">Linkedin</th>
-                        <th scope="col" class="text-center">In Need of Services During</th>
-                        <th scope="col" class="text-center">Email</th>
+                        <th scope="col" class="text-center">Twitter</th>
+                        <th scope="col" class="text-center">Facebook</th>
                        
                        
                         <th class="text-center" scope="col">Action</th>
