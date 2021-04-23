@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Home')
+@section('title','Join our team ')
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -9,9 +9,9 @@
 @section('content')
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-			<h2 class="h2">Edit Home page module - {{$slider->title}}</h2>
+			<h1 class="h2">Edit {{$module->title}}</h1>
 			<div class="btn-toolbar mb-2 mb-md-0">
-			  <a href='{{url("/admin/homepagemodule")}}' class="btn btn-sm btn-outline-secondary">
+			  <a href='{{url("/admin/interpreter-promise")}}' class="btn btn-sm btn-outline-secondary">
               <span data-feather="arrow-left"></span>
               Back &nbsp;&nbsp;
             </a>
@@ -40,23 +40,18 @@
 								<div class="card overflow-hidden">
 									<div class="card-body pb-0 px-4 pt-4 mb-4">
           <form action="{{ route('editpagemodule.submit')}}" method="POST" enctype="multipart/form-data">
-      @csrf
+          @csrf
       
         <div class="form-group">
           <label for="introtitle" class="text-left">Title:</label>
-          <input type="text" class="form-control" id="title" name="title" value="{{$slider->title}}" aria-describedby="title" placeholder="Title" required>
+          <input type="text" class="form-control" id="title" name="title" value="{{$module->title}}" aria-describedby="title" placeholder="Title" required>
         </div>
 
         <div class="form-group">
         <label for="exampleFormControlTextarea1">Description:</label>
         <textarea class="form-control" id="summernote1" name="description" rows="4" required>
-        {{$slider->description}}
+        {{$module->description}}
         </textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="introtitle" class="text-left">Url for Learn more button:</label>
-          <input type="text" class="form-control" id="url" name="url" value="{{$slider->url}}" aria-describedby="url" placeholder="Enter Url" required>
         </div>
 
         <div class="custom-file">
@@ -64,14 +59,15 @@
           <input type="file" id="customFile" name="image">
           
         </div>
+       
+        <input type="hidden" name="pageid" value="{{$module->id}}">
+        <input type="hidden" name="oldimg" value="{{$module->image}}">
+        <input type="hidden" name="redirceturl" value="/admin/interpreter-promise">
         
-        <input type="hidden" name="pageid" value="{{$slider->id}}">
-        <input type="hidden" name="oldimg" value="{{$slider->image}}">
-        <input type="hidden" name="redirceturl" value="/admin/homepagemodule">
       </div>
 
       <p class="ml-4">posted images:</p>
-         <img src="{{ asset('')}}images/pagemodule/{{$slider->image}}" alt="..." class="img-thumbnail ml-4" width=150 height="150"><br/>
+         <img src="{{ asset('')}}images/pagemodule/{{$module->image}}" alt="..." class="img-thumbnail ml-4" width=150 height="150"><br/>
    
        
         <button type="submit" class="btn btn-success">Update</button>

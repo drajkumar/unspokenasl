@@ -34,8 +34,8 @@
 	  
 	  	   <!-- What is ASL  -->
       <?php 
-      $x = 0;
-     ?>
+       $x = 0;
+      ?>
       @foreach($pagemodules as $module)
       <?php $x++; ?>
      

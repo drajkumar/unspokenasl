@@ -28,41 +28,61 @@
 	  <!-- Promises We Keep -->
 	  <section class="section section-lg text-center pb-0" >
         <div class="container">
-          <h3 class="wow-outer"><span class="wow slideInUp"> <b>Promises We Keep...</b></span></h3>
-          <p class="wow-outer"><span class="text-width-1 wow slideInDown">The Unspoken Promise was founded on the core belief of creating a humanistic experience to those hiring, receiving and providing services through Unspoken Language Services. As a boutique interpreting company, we interact with you directly to make you feel like a priority.</span></p>
+          <h3 class="wow-outer"><span class="wow slideInUp"> <b>{{$pageintro->title}}</b></span></h3>
+          <p class="wow-outer"><span class="text-width-1 wow slideInDown">{!! $pageintro->description !!}</span></p>
 	    </div>
       </section>
 	   <!-- to the Client-->
-      <section class="section section-lg">
+       <?php 
+       $x = 0;
+      ?>
+      @foreach($pagemodules as $module)
+      <?php $x++; ?>
+      @if($x % 2 == 0)
+      <section class="section section-lg bg-gray-100">
         <div class="container">
-          <div class="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse">
+          <div class="row row-50 justify-content-center justify-content-lg-between">
             <div class="col-md-10 col-lg-6 col-xl-5">
-              <h3 class="wow-outer"><span class="wow slideInDown">	...to the Client</span></h3>
-              <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">Our ASL interpreters are driven by passion and dedication to the profession. We provide the best interpreters because you deserve the best. Professionalism, culturally knowledgeable, and timely interpreters are ready to serve your interpreting requests.</span></p>
-              <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".1s">As a boutique agency, we recognize that one size does not fit all; therefore, we carefully connect you with the right on-site interpreter for your company’s specific situation. Our extensively trained and certified interpreters each have various interpreting styles and specialized skills that tailor to your needs.</span></p>
-              <div class="wow-outer button-outer"><a class="button button-lg button-primary button-winona wow slideInDown" data-wow-delay=".1s" href="request-services.html">Request Services</a></div>
+              <h3 class="wow-outer"><span class="wow slideInDown">{{$module->title}}</span></h3>
+              <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".1s">{!! $module->description !!}</span></p>
+              @if($module->url != '')
+                <div class="wow-outer button-outer"><a class="button button-lg button-primary button-winona wow slideInDown" data-wow-delay=".1s" href="{{$module->url}}">
+                {{$module->buttonvalue}}</a></div>
+               @else
+                 {{''}}
+               @endif
             </div>
-            <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInLeft" src="https://secureservercdn.net/72.167.25.126/2v8.0a8.myftpupload.com/wp-content/uploads/bb-plugin/cache/qtq80-HTzu3B-circle.jpeg" alt="" width="570" height="368"/>
+            
+            <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInRight" src="{{asset('')}}images/pagemodule/{{$module->image}}" alt="" width="570" height="368"/>
             </div>
           </div>
         </div>
       </section>
 	    <!-- to the Deaf Consumer-->
-      <section class="section section-lg bg-gray-100">
+      @else
+      <section class="section section-lg">
         <div class="container">
-          <div class="row row-50 justify-content-center justify-content-lg-between">
+          <div class="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse">
             <div class="col-md-10 col-lg-6 col-xl-5">
-              <h3 class="wow-outer"><span class="wow slideInDown">...to the Deaf Consumer</span></h3>
-              <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">“Boutique” means you as the consumer, come first. Unspoken Language Services knows the importance of quality, consistency, and accuracy during an interpretation. Whether it is for an intimate medical appointment or a staff meeting, you have the right to preference your request by gender, signing style (ASL, Transliteration, etc.), and comfort level.</span></p>
-              <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".1s">Unspoken Language Services’ goal is to bring complete awareness to the under-served Deaf Community by specializing in cultural mediation and interpretation and allying with you, as the consumer, to ensure your rights as an individual.</span></p>
+              <h3 class="wow-outer"><span class="wow slideInDown">{{$module->title}}</span></h3>
+              <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".1s">{!! $module->description !!}</span></p>
+               @if($module->url != '')
+                <div class="wow-outer button-outer"><a class="button button-lg button-primary button-winona wow slideInDown" data-wow-delay=".1s" href="{{$module->url}}">
+                {{$module->buttonvalue}}</a></div>
+               @else
+                 {{''}}
+               @endif
             </div>
-            <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInRight" src="https://secureservercdn.net/72.167.25.126/2v8.0a8.myftpupload.com/wp-content/uploads/bb-plugin/cache/qtq80-WmfLgF-1024x546-circle.jpeg" alt="" width="570" height="368"/>
+            <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInLeft" src="{{asset('')}}images/pagemodule/{{$module->image}}" alt="" width="570" height="368"/>
             </div>
           </div>
         </div>
       </section>
+      
+      @endif
+      @endforeach
 	  <!-- to the Interpreter-->
-      <section class="section section-lg">
+      {{-- <section class="section section-lg">
         <div class="container">
           <div class="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse">
             <div class="col-md-10 col-lg-6 col-xl-5">
@@ -75,7 +95,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
 	  <!-- Principles of the Promise -->
 	   <section class="section section-lg bg-gray-100">
 		<div class="container text-center">
@@ -83,69 +103,24 @@
 	    </div>
 		<div class="container">
           <div class="row row-30">
-            <div class="col-sm-6 col-lg-4 wow-outer">
+
+            @foreach ($pofps as $pofp)
+              <div class="col-sm-6 col-lg-4 wow-outer">
               <!-- Box Minimal-->
               <article class="box-minimal">
-                <div class="box-minimal-icon fa-underline wow fadeIn"></div>
+                <div class="box-minimal-icon {{$pofp->icon}} wow fadeIn"></div>
                 <div class="box-minimal-main wow-outer">
-                  <h4 class="box-minimal-title wow slideInDown">Full Transparency</h4>
-                  <p class="wow fadeInUpSmall">Our commitment is to operate our company in a way that produces a proficient request processing experience.</p>
+                  <h4 class="box-minimal-title wow slideInDown">{{$pofp->title}}</h4>
+                  <p class="wow fadeInUpSmall">{!! $pofp->description !!}</p>
                 </div>
               </article>
             </div>
-            <div class="col-sm-6 col-lg-4 wow-outer">
-              <!-- Box Minimal-->
-              <article class="box-minimal">
-                <div class="box-minimal-icon fa-users wow fadeIn" data-wow-delay=".1s"></div>
-                <div class="box-minimal-main wow-outer">
-                  <h4 class="box-minimal-title wow slideInDown" data-wow-delay=".1s">Personable Customer Service</h4>
-                  <p class="wow fadeInUpSmall" data-wow-delay=".1s">Our commitment is to provide high quality, convenient, and a personable client service experience that is instilled with timely and consistent communication.</p>
-                </div>
-              </article>
-            </div>
-            <div class="col-sm-6 col-lg-4 wow-outer">
-              <!-- Box Minimal-->
-              <article class="box-minimal">
-                <div class="box-minimal-icon fa-home wow fadeIn" data-wow-delay=".2s"></div>
-                <div class="box-minimal-main wow-outer">
-                  <h4 class="box-minimal-title wow slideInDown" data-wow-delay=".2s">Community Driven</h4>
-                  <p class="wow fadeInUpSmall" data-wow-delay=".2s">We commit to uphold the utmost integrity of doing business within the community and demonstrate moral citizenship that embodies accountability for the outcome of our work.</p>
-                </div>
-              </article>
-            </div>
+            @endforeach
+            
+            
+            
           </div>
-          <div class="row row-30">
-            <div class="col-sm-6 col-lg-4 wow-outer">
-              <!-- Box Minimal-->
-              <article class="box-minimal">
-                <div class="box-minimal-icon fa-id-card wow fadeIn"></div>
-                <div class="box-minimal-main wow-outer">
-                  <h4 class="box-minimal-title wow slideInDown">Thorough Quality Control</h4>
-                  <p class="wow fadeInUpSmall">We are committed to upholding elevated standards in the profession when evaluating, vetting, and placing our sign language interpreters in the field.</p>
-                </div>
-              </article>
-            </div>
-            <div class="col-sm-6 col-lg-4 wow-outer">
-              <!-- Box Minimal-->
-              <article class="box-minimal">
-                <div class="box-minimal-icon fa-handshake-o wow fadeIn" data-wow-delay=".1s"></div>
-                <div class="box-minimal-main wow-outer">
-                  <h4 class="box-minimal-title wow slideInDown" data-wow-delay=".1s">We’ll Make It Right</h4>
-                  <p class="wow fadeInUpSmall" data-wow-delay=".1s">We commit to making it right should a challenge arise with our delivered interpreting services.</p>
-                </div>
-              </article>
-            </div>
-            <div class="col-sm-6 col-lg-4 wow-outer">
-              <!-- Box Minimal-->
-              <article class="box-minimal">
-                <div class="box-minimal-icon fa-comments wow fadeIn" data-wow-delay=".2s"></div>
-                <div class="box-minimal-main wow-outer">
-                  <h4 class="box-minimal-title wow slideInDown" data-wow-delay=".2s">Feedback</h4>
-                  <p class="wow fadeInUpSmall" data-wow-delay=".2s">We absolutely commit to actively extending the opportunity for our clients to share all aspects of their service experience. We want to hear from you!</p>
-                </div>
-              </article>
-            </div>
-          </div>
+         
         </div>
       </section>
 	  

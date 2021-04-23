@@ -92,23 +92,11 @@
       <div class="container">
         <div class="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse">
           <div class="col-md-10 col-lg-6 col-xl-5">
-            <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">Unspoken Language Services have a
-                boutique, close-knit atmosphere, where we're always searching to hire talented, highly skilled
-                interpreters, who take pride in providing exceptional customer service amongst all participants involved
-                in the interpreting process. Communication fluidity and professionalism between the interactions of the
-                deaf and hearing clients cannot be emphasized enough.</span></p>
-            <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">In an effort to continue providing
-                consistently outstanding services, Unspoken strongly endorses the NAD-RID Code of Professional
-                Conduct (CPC). We serve a very diverse group of Deaf consumers, and we strive to work with like-minded
-                professionals who adhere to its Principles and Tenets.</span></p>
-            <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">We hire committed and passionate
-                ASL Interpreters that set themselves apart from the rest by honoring and upholding the principles of the
-                NAD-RID CPC and <a style="color: #005e54;text-decoration:underline;"
-                  href="the-unspoken-promise.html">Unspoken Promise</a>. If you feel you deserve to work alongside our
-                team of interpreters, complete the application below!</span></p>
+            <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">{!! $pagemodules->description !!}</span></p>
+
           </div>
           <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInRight"
-              src="https://secureservercdn.net/72.167.25.126/2v8.0a8.myftpupload.com/wp-content/uploads/bb-plugin/cache/qtq80-SbPhBL-circle.jpeg"
+              src="{{asset('')}}images/pagemodule/{{$pagemodules->image}}"
               alt="" width="570" height="368" />
           </div>
         </div>

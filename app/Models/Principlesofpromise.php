@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pagemodule extends Model
+class Principlesofpromise extends Model
 {
     use HasFactory;
 
-    protected $table = 'pagemodules';
+    protected $table = 'principlesofpromises';
 
     protected $fillable = [
-      'page_name', 'title', 'description', 'url', 'buttonvalue', 'image',
+         'title', 'description', 'icon',
     ];
 }

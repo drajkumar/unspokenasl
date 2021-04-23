@@ -50,6 +50,7 @@ class CommonPageController extends Controller
             'title'        => $request->title,
             'description'  => $request->description,
             'url'       => !empty($request->url) ? $request->url : "",
+            'buttonvalue'       => !empty($request->buttonvalue) ? $request->buttonvalue : "",
             'image'        => $serverimgname
 
         ];
@@ -78,6 +79,7 @@ class CommonPageController extends Controller
             'title'        => $request->title,
             'description'  => $request->description,
             'url'       => !empty($request->url) ? $request->url : "",
+            'buttonvalue'       => !empty($request->buttonvalue) ? $request->buttonvalue : ""
         ];
 
         Pagemodule::where('id', $id)->update($coursesdata);
@@ -93,12 +95,13 @@ class CommonPageController extends Controller
             'title'        => $request->title,
             'description'  => $request->description,
             'url'       => !empty($request->url) ? $request->url : "",
+            'buttonvalue'       => !empty($request->buttonvalue) ? $request->buttonvalue : "",
             'image'        => $serverimgname
         ];
 
         Pagemodule::where('id', $id)->update($coursesdata);
         unlink('images/pagemodule/'.$oldimage);
-         return redirect($url)->with("updatpmsec", "Content is successfuly updated");
+        return redirect($url)->with("updatpmsec", "Content is successfuly updated");
      }
      
     }

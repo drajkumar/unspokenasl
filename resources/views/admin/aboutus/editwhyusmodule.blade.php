@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Home')
+@section('title','Why us')
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -9,9 +9,9 @@
 @section('content')
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-			<h2 class="h2">Edit Home page module - {{$slider->title}}</h2>
+			<h2 class="h2">Edit Why us page module - {{$slider->title}}</h2>
 			<div class="btn-toolbar mb-2 mb-md-0">
-			  <a href='{{url("/admin/homepagemodule")}}' class="btn btn-sm btn-outline-secondary">
+			  <a href='{{url("/admin/why-us-module")}}' class="btn btn-sm btn-outline-secondary">
               <span data-feather="arrow-left"></span>
               Back &nbsp;&nbsp;
             </a>
@@ -39,8 +39,8 @@
 							<div class="col-xl-9 col-xxl-9 col-lg-9 col-sm-9">
 								<div class="card overflow-hidden">
 									<div class="card-body pb-0 px-4 pt-4 mb-4">
-          <form action="{{ route('editpagemodule.submit')}}" method="POST" enctype="multipart/form-data">
-      @csrf
+        <form action="{{ route('editpagemodule.submit')}}" method="POST" enctype="multipart/form-data">
+           @csrf
       
         <div class="form-group">
           <label for="introtitle" class="text-left">Title:</label>
@@ -55,8 +55,13 @@
         </div>
 
         <div class="form-group">
-          <label for="introtitle" class="text-left">Url for Learn more button:</label>
+          <label for="introtitle" class="text-left">Url: (Optinal)</label>
           <input type="text" class="form-control" id="url" name="url" value="{{$slider->url}}" aria-describedby="url" placeholder="Enter Url" required>
+        </div>
+
+        <div class="form-group">
+          <label for="url" class="text-left">Button name: (Optinal)</label>
+          <input type="text" class="form-control" id="buttonvalue" name="buttonvalue" value="{{$slider->buttonvalue}}" aria-describedby="buttonvalue" placeholder="Button value">
         </div>
 
         <div class="custom-file">
@@ -67,7 +72,7 @@
         
         <input type="hidden" name="pageid" value="{{$slider->id}}">
         <input type="hidden" name="oldimg" value="{{$slider->image}}">
-        <input type="hidden" name="redirceturl" value="/admin/homepagemodule">
+        <input type="hidden" name="redirceturl" value="/admin/why-us-module">
       </div>
 
       <p class="ml-4">posted images:</p>

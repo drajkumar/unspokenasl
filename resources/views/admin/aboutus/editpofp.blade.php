@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Home')
+@section('title','Principles of the Promise')
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -9,9 +9,9 @@
 @section('content')
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-			<h2 class="h2">Edit Home page module - {{$slider->title}}</h2>
+			<h2 class="h2">Edit Principles of the Promise module - {{$pofp->title}}</h2>
 			<div class="btn-toolbar mb-2 mb-md-0">
-			  <a href='{{url("/admin/homepagemodule")}}' class="btn btn-sm btn-outline-secondary">
+			  <a href='{{url("/admin/principles-of-promise")}}' class="btn btn-sm btn-outline-secondary">
               <span data-feather="arrow-left"></span>
               Back &nbsp;&nbsp;
             </a>
@@ -39,41 +39,31 @@
 							<div class="col-xl-9 col-xxl-9 col-lg-9 col-sm-9">
 								<div class="card overflow-hidden">
 									<div class="card-body pb-0 px-4 pt-4 mb-4">
-          <form action="{{ route('editpagemodule.submit')}}" method="POST" enctype="multipart/form-data">
-      @csrf
+        <form action="{{ route('editpofpstore.submit')}}" method="POST">
+           @csrf
       
         <div class="form-group">
           <label for="introtitle" class="text-left">Title:</label>
-          <input type="text" class="form-control" id="title" name="title" value="{{$slider->title}}" aria-describedby="title" placeholder="Title" required>
+          <input type="text" class="form-control" id="title" name="title" value="{{$pofp->title}}" aria-describedby="title" placeholder="Title" required>
         </div>
 
         <div class="form-group">
         <label for="exampleFormControlTextarea1">Description:</label>
         <textarea class="form-control" id="summernote1" name="description" rows="4" required>
-        {{$slider->description}}
+        {{$pofp->description}}
         </textarea>
         </div>
 
         <div class="form-group">
-          <label for="introtitle" class="text-left">Url for Learn more button:</label>
-          <input type="text" class="form-control" id="url" name="url" value="{{$slider->url}}" aria-describedby="url" placeholder="Enter Url" required>
+          <label for="url" class="text-left">Icon: similar to (fa-underline, fa-user)</label>
+          <input type="text" class="form-control" id="icon" name="icon" value="{{$pofp->icon}}" aria-describedby="Icon" placeholder="fa-user" required>
         </div>
 
-        <div class="custom-file">
-          <label for="customFile">Choose file</label>
-          <input type="file" id="customFile" name="image">
-          
-        </div>
-        
-        <input type="hidden" name="pageid" value="{{$slider->id}}">
-        <input type="hidden" name="oldimg" value="{{$slider->image}}">
-        <input type="hidden" name="redirceturl" value="/admin/homepagemodule">
-      </div>
-
-      <p class="ml-4">posted images:</p>
-         <img src="{{ asset('')}}images/pagemodule/{{$slider->image}}" alt="..." class="img-thumbnail ml-4" width=150 height="150"><br/>
-   
        
+        
+        <input type="hidden" name="pageid" value="{{$pofp->id}}">
+        
+      </div>
         <button type="submit" class="btn btn-success">Update</button>
    
       </form>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','About us')
+@section('title','Join our team')
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -10,35 +10,33 @@
 @section('content')
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
      <nav class="navbar navbar-expand-lg  navbar-dark bg-dark mt-3">
-        <a class="navbar-brand text-center pl-5 pr-5" href="{{ url('/admin/aboutus') }}">Aboutus</a>
+        <a class="navbar-brand text-center pl-5 pr-5" href="{{ url('/admin/join-our-team') }}">Join our team</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav mt-3">
           <ul class="navbar-nav">
             <li class="nav-item active ml-2">
-              <a class="nav-link" href="{{ url('/admin/aboutus') }}">About us module <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ url('/admin/join-our-team') }}">Join our team Intro <span class="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-item active ml-2">
-              <a class="nav-link" href="{{ url('/admin/why-us-intro') }}">Why us intro  <span class="sr-only">(current)</span></a>
-            </li>
+             <li class="nav-item active ml-2">
+              <a class="nav-link" href="{{ url('/admin/interpreter-promise') }}">Join our team / Interpreter Promise module
 
-            <li class="nav-item active ml-2">
-              <a class="nav-link" href="{{ url('/admin/why-us-module') }}">Why us module  <span class="sr-only">(current)</span></a>
-            </li>
-
-            <li class="nav-item active ml-2">
-              <a class="nav-link" href="{{ url('/admin/principles-of-promise') }}">Principles Of Promise  <span class="sr-only">(current)</span></a>
+              <span class="sr-only">(current)</span></a>
             </li>
       
+            <li class="nav-item active ml-2">
+              <a class="nav-link" href="{{ url('/admin/join-application') }}">Application
+              <span class="sr-only">(current)</span></a>
+            </li>
 
-            
+           
           </ul>
         </div>
       </nav>
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-			<h1 class="h2">About us module</h1>
+			<h1 class="h2">Application module</h1>
 			<div class="btn-toolbar mb-2 mb-md-0">
 			 
 			  <!-- <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
@@ -47,9 +45,9 @@
 			  </button> -->
 			</div>
 		</div>
-		 @if(session('updatpmsec'))
+		 @if(session('updateappsucc'))
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> {{session('updatpmsec')}}
+          <strong>Success!</strong> {{session('updateappsucc')}}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -80,7 +78,6 @@
                       <thead>
                         <tr>
                         <th scope="col">#</th>
-                        
                         <th scope="col">Descrition</th>
                         <th scope="col">Image</th>
                         <th class="text-center" scope="col">Action</th>
@@ -89,9 +86,8 @@
                     <tbody>
                         <tr>
                         <th scope="row">1</th>
-                        
-                        <td class="text-center">{!! $pageintro->description !!}</td>
-                        <td><img src="{{asset('')}}images/pagemodule/{{$pageintro->image}}" width=150 height=150></td>
+                        <td class="text-center">{!! $pagemodules->description !!}</td>
+                        <td><img src="{{asset('')}}images/pagemodule/{{$pagemodules->image}}" width=150 height=150></td>
                         <td class="text-center w-25">
                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#serviceintropage">
                           <span data-feather="edit"></span> Edit
@@ -101,7 +97,7 @@
                         <div class="modal fade" id="serviceintropage" tabindex="-1" role="dialog" aria-labelledby="serviceintropageLongTitle" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content rounded-0">
-                                <form action="{{ route('editaboutus.submit')}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('applicationeditstore.submit')}}" method="POST" enctype="multipart/form-data">
                                  @csrf
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="serviceintropageLongTitle">Edit</h5>
@@ -111,11 +107,10 @@
                                 </div>
                                 <div class="modal-body">
 
-
                                     <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Description:</label>
                                     <textarea class="form-control" id="summernote" name="description" rows="4" required>
-                                    {{$pageintro->description }}
+                                    {{$pagemodules->description }}
                                     </textarea>
                                     </div>
 
@@ -125,12 +120,11 @@
 
                                     </div>
 
-
-                                    <input type="hidden" id="pageid" name="pageid" value="{{$pageintro->id}}">
-                                    <input type="hidden" id="oldimg" name="oldimg" value="{{$pageintro->image}}">
+                                    <input type="hidden" id="pageid" name="pageid" value="{{$pagemodules->id}}">
+                                    <input type="hidden" id="oldimg" name="oldimg" value="{{$pagemodules->image}}">
 
                                     <p class="mt-2">posted images:</p>
-                                    <img src="{{ asset('')}}images/pagemodule/{{$pageintro->image}}" alt="..." class="img-thumbnail" width=150 height="150">
+                                    <img src="{{ asset('')}}images/pagemodule/{{$pagemodules->image}}" alt="..." class="img-thumbnail" width=150 height="150">
                                     
 
 
@@ -187,8 +181,18 @@
             $('#summernote').summernote({
                 placeholder: 'Enter Description',
                 tabsize: 2,
-                height: 150
+                height: 220
             });
+
+            $('#summernote1').summernote({
+                placeholder: 'Enter Description',
+                tabsize: 2,
+                height: 220
+            });
+
+            
+
+
       
         });
     </script>

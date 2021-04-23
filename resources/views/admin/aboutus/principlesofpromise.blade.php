@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Services')
+@section('title','Principles of the Promise')
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -11,26 +11,30 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
      
       <nav class="navbar navbar-expand-lg  navbar-dark bg-dark mt-3">
-        <a class="navbar-brand text-center pl-5 pr-5" href="{{ url('/admin/service') }}">Service</a>
+        <a class="navbar-brand text-center pl-5 pr-5" href="{{ url('/admin/aboutus') }}">Aboutus</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav mt-3">
           <ul class="navbar-nav">
             <li class="nav-item active ml-2">
-              <a class="nav-link" href="{{ url('/admin/service') }}">Service Intro <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ url('/admin/aboutus') }}">About us module <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active ml-2">
+              <a class="nav-link" href="{{ url('/admin/why-us-intro') }}">Why us intro  <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active ml-2">
+              <a class="nav-link" href="{{ url('/admin/why-us-module') }}">Why us module  <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active ml-2">
+              <a class="nav-link" href="{{ url('/admin/principles-of-promise') }}">Principles Of Promise  <span class="sr-only">(current)</span></a>
             </li>
       
-            <li class="nav-item active ml-2">
-              <a class="nav-link" href="{{ url('/admin/servicepagemoduleview') }}">Service Page module
-              <span class="sr-only">(current)</span></a>
-            </li>
 
-            <li class="nav-item active ml-2">
-              <a class="nav-link" href="{{ url('/admin/serviceallview') }}">Services
-
-              <span class="sr-only">(current)</span></a>
-            </li>
+            
           </ul>
         </div>
       </nav>
@@ -57,7 +61,7 @@
       	
 
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-5 mt-5 border-bottom">
-        <h1 class="h2">Service page module</h1>
+        <h1 class="h2">Principles of the Promise module</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
           
@@ -69,27 +73,27 @@
         </div>
       </div>
 
-    	@if(session('pagemodulesuccess'))
+    	@if(session('pofpsuccess'))
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> {{session('pagemodulesuccess')}}
+          <strong>Success!</strong> {{session('pofpsuccess')}}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         @endif
 
-        @if(session('updatpmsec'))
+        @if(session('pofpupsuccess'))
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> {{session('updatpmsec')}}
+          <strong>Success!</strong> {{session('pofpupsuccess')}}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         @endif
 
-        @if(session('pagemoduledelsuccess'))
+        @if(session('pofpdelsuccess'))
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> {{session('pagemoduledelsuccess')}}
+          <strong>Success!</strong> {{session('pofpdelsuccess')}}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -110,7 +114,7 @@
                               <th scope="col">#</th>
                               <th scope="col">Title</th>
                               <th scope="col">Descrition</th>
-                              <th scope="col">Image</th>
+                              <th scope="col">Icon name</th>
                               <th scope="col" class="text-center w-25">Action</th>
                               </tr>
                           </thead>
@@ -118,18 +122,18 @@
                           <?php 
                            $x = 0;
                           ?>
-                            @foreach($pagemodules as $pagemodule)
+                            @foreach($pofps as $pofp)
                             <?php $x++ ?>
                               <tr>
                               <th scope="row">{{$x}}</th>
-                              <td>{{$pagemodule->title}}</td>
-                              <td>{!! $pagemodule->description !!}</td>
-                              <td><img src="{{asset('')}}images/pagemodule/{{$pagemodule->image}}" width=150 height=150></td>
+                              <td>{{$pofp->title}}</td>
+                              <td>{!! $pofp->description !!}</td>
+                              <td>{{$pofp->icon}}</td>
                               <td class="text-center w-25">
-                                <a href='{{url("/admin/editpagemodule/{$pagemodule->id}")}}' class="btn btn-sm btn-info mt-1 getpagemoduleinfo">
+                                <a href='{{url("/admin/principles-of-promise-edit/{$pofp->id}")}}' class="btn btn-sm btn-info mt-1 getpagemoduleinfo">
                                   <span data-feather="edit"></span> Edit
                                 </a>
-                                <button type="button" class="btn btn-sm btn-danger mt-1 delpagemoduleclass" pagemodule-id="{{$pagemodule->id}}" data-toggle="modal" data-target="#serviceintromoduledel">
+                                <button type="button" class="btn btn-sm btn-danger mt-1 delservicemoduleclass" pagemodule-id="{{$pofp->id}}" data-toggle="modal" data-target="#serviceintromoduledel">
                                   <span data-feather="trash"></span> Delete
                                 </button>
                                             
@@ -147,8 +151,8 @@
 						</div>
 						</div>
 					</div><br/>
-                    {{ $pagemodules->links()}}
-				</div>
+                      {{ $pofps->links()}}
+		        </div>
 
 
 
@@ -167,10 +171,10 @@
 <div class="modal fade" id="addpagemodule" tabindex="-1" role="dialog" aria-labelledby="addpagemoduleLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content rounded-0">
-    <form action="{{ route('storepagemodule.submit')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('stroepofp.submit')}}" method="POST">
       @csrf
       <div class="modal-header">
-        <h5 class="modal-title" id="addpagemoduleLabel">Add page module</h5>
+        <h5 class="modal-title" id="addpagemoduleLabel">Principles of the Promise module</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -187,13 +191,11 @@
         </textarea>
         </div>
 
-        <div class="custom-file">
-        <label for="customFile">Choose Image:</label>
-          <input type="file" id="customFile" name="image" required>
-          
+        <div class="form-group">
+          <label for="url" class="text-left">Icon: similar to (fa-underline, fa-user)</label>
+          <input type="text" class="form-control" id="icon" name="icon" value="" aria-describedby="Icon" placeholder="fa-user" required>
         </div>
-        <input type="hidden" name="redirceturl" value="/admin/servicepagemoduleview">
-        <input type="hidden" name="pagename" value="our-services">
+       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -213,7 +215,7 @@
   <div class="modal fade" id="serviceintromoduledel" tabindex="-1" role="dialog" aria-labelledby="serviceintromoduledel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content rounded-0">
-      <form action="{{ route('pagemoduledelete.submit')}}" method="POST">
+      <form action="{{ route('pofpdelete.submit')}}" method="POST">
       @csrf
         <div class="modal-header">
           <h5 class="modal-title" id="serviceintromoduledel">Delete page module</h5>
@@ -224,7 +226,6 @@
         <div class="modal-body">
           <p>Are you sure delete this?...</P>
           <input type="hidden" id="delpageid" name="delpageid" value="">
-          <input type="hidden" name="redirceturl" value="/admin/servicepagemoduleview">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
@@ -241,15 +242,17 @@
 
 @endsection
 
+
+
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#summernote').summernote({
-                placeholder: 'Enter Description',
-                tabsize: 2,
-                height: 150
-            });
+         $(document).ready(function() {
+        //     $('#summernote').summernote({
+        //         placeholder: 'Enter Description',
+        //         tabsize: 2,
+        //         height: 150
+        //     });
 
             $('#summernote1').summernote({
                 placeholder: 'Enter Description',
@@ -259,25 +262,25 @@
 
             
 
-            $('.getserviceedit').click(function() {
+        //     $('.getserviceedit').click(function() {
     
-            var getceditid = $(this).attr('service-id');
-            var getcedittitle = $(this).attr('servicename-id');
-            var getceditoldimg = $(this).attr('serviceoldimg-id');
+        //     var getceditid = $(this).attr('service-id');
+        //     var getcedittitle = $(this).attr('servicename-id');
+        //     var getceditoldimg = $(this).attr('serviceoldimg-id');
 
-            var setoldimage = "{{ asset('')}}images/service/"+getceditoldimg 
+        //     var setoldimage = "{{ asset('')}}images/service/"+getceditoldimg 
 
-            $("#setoldimage").attr("src", setoldimage);
+        //     $("#setoldimage").attr("src", setoldimage);
             
-            $('#oldimg').val(getceditoldimg);
-            $('#stitle').val(getcedittitle);
+            
+        //     $('#stitle').val(getcedittitle);
           
-            $('#serviceeditid').val(getceditid);
+        //     $('#serviceeditid').val(getceditid);
           
 
-             });
+        //      });
 
-          $('.delpagemoduleclass').click(function() {
+          $('.delservicemoduleclass').click(function() {
             
             var getdelid = $(this).attr('pagemodule-id');
            

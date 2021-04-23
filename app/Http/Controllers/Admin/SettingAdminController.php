@@ -36,7 +36,7 @@ class SettingAdminController extends Controller
 
     public function servicepagemoduleview()
     {   
-        $pagemodules = Pagemodule::where('page_name', 'our-services')->paginate(1);
+        $pagemodules = Pagemodule::where('page_name', 'our-services')->paginate(10);
         return view('admin.service.servicepagemoduleview', compact('pagemodules'));
     }
 
@@ -110,7 +110,7 @@ class SettingAdminController extends Controller
         Service::where('id', $id)->update($data);
         unlink('images/service/'.$oldimage);
         
-         return redirect('/admin/serviceallview')->with("updatservice", "Service is successfuly updated");
+        return redirect('/admin/serviceallview')->with("updatservice", "Service is successfuly updated");
      
       }
     }
@@ -269,7 +269,7 @@ class SettingAdminController extends Controller
         ];
 
         Servicesetting::where('id', $id)->update($data);
-      return redirect('/admin/servicesetting/'.$rurl)->with('serviceseetingupsuccess', 'Service setting successfully Updated');
+        return redirect('/admin/servicesetting/'.$rurl)->with('serviceseetingupsuccess', 'Service setting successfully Updated');
 
      }else{
        
@@ -285,7 +285,7 @@ class SettingAdminController extends Controller
 
         Servicesetting::where('id', $id)->update($data);
         unlink('images/service/'.$oldimage);
-         return redirect('/admin/servicesetting/'.$rurl)->with('serviceseetingupsuccess', 'Service setting successfully Updated');
+        return redirect('/admin/servicesetting/'.$rurl)->with('serviceseetingupsuccess', 'Service setting successfully Updated');
      
       }
 

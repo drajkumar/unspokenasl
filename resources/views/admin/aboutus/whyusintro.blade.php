@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','About us')
+@section('title','Why us')
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
         </div>
       </nav>
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-			<h1 class="h2">About us module</h1>
+			<h1 class="h2">Why us intro</h1>
 			<div class="btn-toolbar mb-2 mb-md-0">
 			 
 			  <!-- <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
@@ -47,9 +47,9 @@
 			  </button> -->
 			</div>
 		</div>
-		 @if(session('updatpmsec'))
+		 @if(session('pageintrosuccess'))
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> {{session('updatpmsec')}}
+          <strong>Success!</strong> {{session('pageintrosuccess')}}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -68,7 +68,8 @@
                 </div>
             @endif
 
-	<div class="content-body">
+
+        	<div class="content-body">
 			 <!-- row -->
         <div class="container-fluid">
           <div class="row">
@@ -80,71 +81,58 @@
                       <thead>
                         <tr>
                         <th scope="col">#</th>
-                        
+                        <th scope="col">Title</th>
                         <th scope="col">Descrition</th>
-                        <th scope="col">Image</th>
                         <th class="text-center" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                         <th scope="row">1</th>
-                        
+                        <td>{{$pageintro->title}}</td>
                         <td class="text-center">{!! $pageintro->description !!}</td>
-                        <td><img src="{{asset('')}}images/pagemodule/{{$pageintro->image}}" width=150 height=150></td>
+                        
                         <td class="text-center w-25">
                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#serviceintropage">
                           <span data-feather="edit"></span> Edit
                         </button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="serviceintropage" tabindex="-1" role="dialog" aria-labelledby="serviceintropageLongTitle" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content rounded-0">
-                                <form action="{{ route('editaboutus.submit')}}" method="POST" enctype="multipart/form-data">
-                                 @csrf
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="serviceintropageLongTitle">Edit</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-
-
-                                    <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Description:</label>
-                                    <textarea class="form-control" id="summernote" name="description" rows="4" required>
-                                    {{$pageintro->description }}
-                                    </textarea>
-                                    </div>
-
-                                    <div class="custom-file">
-                                    <label for="customFile">Choose Image:</label>
-                                    <input type="file" id="customFile" name="image">
-
-                                    </div>
-
-
-                                    <input type="hidden" id="pageid" name="pageid" value="{{$pageintro->id}}">
-                                    <input type="hidden" id="oldimg" name="oldimg" value="{{$pageintro->image}}">
-
-                                    <p class="mt-2">posted images:</p>
-                                    <img src="{{ asset('')}}images/pagemodule/{{$pageintro->image}}" alt="..." class="img-thumbnail" width=150 height="150">
-                                    
-
-
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-info">Update</button>
-                                </div>
-                                </form>
+                      <div class="modal fade" id="serviceintropage" tabindex="-1" role="dialog" aria-labelledby="serviceintropageLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content rounded-0">
+                          <form action="{{ route('pageintroedit.submit')}}" method="POST">
+                          @csrf
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="serviceintropageLabel">Edit</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="form-group">
+                              <label for="introtitle" class="text-left">Title:</label>
+                              <input type="text" class="form-control" id="introtitle" name="introtitle" value="{{$pageintro->title}}" aria-describedby="title" placeholder="Title" required>
+                              
                               </div>
+
+                              <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Description:</label>
+                                <textarea class="form-control" id="summernote" name="description" rows="4" required>
+                                {{$pageintro->description }}
+                                </textarea>
+                              </div>
+                              <input type="hidden" name="pageid" value="{{$pageintro->id}}">
+                              <input type="hidden" name="redirceturl" value="/admin/why-us-intro">
                             </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-info">Update</button>
                             </div>
-                      
+                            </form>
+                          </div>
+                        </div>
+                      </div>
                         </td>
                         </tr>
                       
@@ -158,14 +146,10 @@
             </div>
           </div>
         </div>
-      
 
-      
 	</div>
-						
-					
-	 
-    
+
+
 	</main>
 
 

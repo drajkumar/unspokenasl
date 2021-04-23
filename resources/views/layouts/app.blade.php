@@ -91,6 +91,7 @@
                 <li><a class="dropdown-item" href="{{ url('/admin/agencies')}}"><span data-feather="layout"></span> Agencies</a></li>
                 <li><a class="dropdown-item" href="{{ url('/admin/faq')}}"><span data-feather="layout"></span> Faq</a></li>
                 <li><a class="dropdown-item" href="{{ url('/admin/aboutus')}}"><span data-feather="layout"></span> About us</a></li>
+                <li><a class="dropdown-item" href="{{ url('/admin/join-our-team')}}"><span data-feather="layout"></span> Join our team</a></li>
                 <li><a class="dropdown-item" href="{{ url('/admin/contactus')}}"><span data-feather="mail"></span> Contact us</a></li>
                 <li><a class="dropdown-item" href="{{ url('/admin/sociallink')}}"><span data-feather="layout"></span> Social Links</a></li>
                   <!-- <li><a class="dropdown-item" href="#">Another action</a></li>

@@ -10,8 +10,6 @@ use App\Http\Controllers\JoinourteamController;
 use App\Http\Controllers\BlogController;
 
 
-
-
 //----- Route for admin ------//
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Admin\HomeController;
@@ -20,6 +18,7 @@ use App\Http\Controllers\Admin\CommonPageController;
 use App\Http\Controllers\Admin\ServicefaqagencController;
 use App\Http\Controllers\Admin\AboutusadminController;
 use App\Http\Controllers\Admin\ContactusadminController;
+use App\Http\Controllers\Admin\AdminjoinusController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,7 +67,7 @@ Route::get('/unspoken-thoughts', [BlogController::class, 'blog']);
 Auth::routes();
 
 
-
+// ----- home ------//
 Route::get('admin/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('admin/addslider', [HomeController::class, 'addslider']);
@@ -89,11 +88,7 @@ Route::post('admin/cslideredit', [HomeController::class, 'editclientimg'])->name
 
 Route::post('admin/csliderdelete', [HomeController::class, 'deleteclintsl'])->name('deleteclintsl.submit');
 
-Route::get('admin/service', [SettingAdminController::class, 'index'])->name('service');
-
-Route::get('admin/servicepagemoduleview', [SettingAdminController::class, 'servicepagemoduleview']);
-
-Route::get('admin/editpagemodule/{id}', [SettingAdminController::class, 'editpagemodule']);
+//----- common route ------//
 
 Route::post('admin/pageintroedit', [CommonPageController::class, 'editintropages'])->name('pageintroedit.submit');
 
@@ -102,6 +97,14 @@ Route::post('admin/storepagemodule', [CommonPageController::class, 'storepagemod
 Route::post('admin/updatepagemodule', [CommonPageController::class, 'editpagemodule'])->name('editpagemodule.submit');
 
 Route::post('admin/pagemoduledelete', [CommonPageController::class, 'deletepagemodule'])->name('pagemoduledelete.submit');
+
+//---- services ------//
+
+Route::get('admin/service', [SettingAdminController::class, 'index'])->name('service');
+
+Route::get('admin/servicepagemoduleview', [SettingAdminController::class, 'servicepagemoduleview']);
+
+Route::get('admin/editpagemodule/{id}', [SettingAdminController::class, 'editpagemodule']);
 
 Route::get('admin/serviceallview', [SettingAdminController::class, 'serviceallview']);
 
@@ -147,9 +150,29 @@ Route::post('admin/updatequestion', [ServicefaqagencController::class, 'updatequ
 
 Route::post('admin/removequestion', [ServicefaqagencController::class, 'deletequesans'])->name('deletequesans.submit');
 
+//----- about us ------//
+
 Route::get('admin/aboutus', [AboutusadminController::class, 'viewaboutus']);
 
+Route::get('admin/why-us-intro', [AboutusadminController::class, 'whyusintro']);
+
+Route::get('admin/why-us-module', [AboutusadminController::class, 'whyusmodule']);
+
+Route::get('admin/why-us-module-edit/{id}', [AboutusadminController::class, 'editwhyusview']);
+
+Route::get('admin/principles-of-promise', [AboutusadminController::class, 'principlesofpromiseindex']);
+
+Route::get('admin/principles-of-promise-edit/{id}', [AboutusadminController::class, 'editpofpview']);
+
+Route::post('admin/pofp', [AboutusadminController::class, 'storepofp'])->name('stroepofp.submit');
+
+Route::post('admin/pofpedit', [AboutusadminController::class, 'editpofpstore'])->name('editpofpstore.submit');
+
+Route::post('admin/pofpdelete', [AboutusadminController::class, 'pofpdelete'])->name('pofpdelete.submit');
+
 Route::post('admin/updateaboutus', [AboutusadminController::class, 'editaboutus'])->name('editaboutus.submit');
+
+//----- contact ------// 
 
 Route::get('admin/contactus', [ContactusadminController::class, 'contactusview']);
 
@@ -160,6 +183,18 @@ Route::post('admin/contactusimage', [ContactusadminController::class, 'editconta
 Route::get('admin/sociallink', [ContactusadminController::class, 'sociallink']);
 
 Route::post('admin/editsociallink', [ContactusadminController::class, 'updatedsociallink'])->name('updatedsociallink.submit');
+
+//---- join us -----//
+
+Route::get('admin/join-our-team', [AdminjoinusController::class, 'index']);
+
+Route::get('admin/interpreter-promise', [AdminjoinusController::class, 'interpreterpromise']);
+
+Route::get('admin/editinterpro/{id}', [AdminjoinusController::class, 'editinterpro']);
+
+Route::get('admin/join-application', [AdminjoinusController::class, 'joinapplication']);
+
+Route::post('admin/applicationeditstore', [AdminjoinusController::class, 'applicationeditstore'])->name('applicationeditstore.submit');
 
 Route::get('admin/',function() {
     return Redirect::to('/admin/login');

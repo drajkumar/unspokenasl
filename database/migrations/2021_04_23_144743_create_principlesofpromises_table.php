@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagemodulesTable extends Migration
+class CreatePrinciplesofpromisesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreatePagemodulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pagemodules', function (Blueprint $table) {
+        Schema::create('principlesofpromises', function (Blueprint $table) {
             $table->id();
-            $table->string('page_name');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('url')->nullable();
-            $table->string('buttonvalue')->nullable();
-            $table->string('image')->nullable();
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreatePagemodulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pagemodules');
+        Schema::dropIfExists('principlesofpromises');
     }
 }
