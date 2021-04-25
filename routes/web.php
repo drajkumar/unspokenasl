@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\ServicefaqagencController;
 use App\Http\Controllers\Admin\AboutusadminController;
 use App\Http\Controllers\Admin\ContactusadminController;
 use App\Http\Controllers\Admin\AdminjoinusController;
+use App\Http\Controllers\Admin\RequestadminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -195,6 +196,12 @@ Route::get('admin/editinterpro/{id}', [AdminjoinusController::class, 'editinterp
 Route::get('admin/join-application', [AdminjoinusController::class, 'joinapplication']);
 
 Route::post('admin/applicationeditstore', [AdminjoinusController::class, 'applicationeditstore'])->name('applicationeditstore.submit');
+
+//----- request ------//
+
+Route::get('admin/requestview', [RequestadminController::class, 'requestIndex']);
+
+Route::get('admin/requestmodule', [RequestadminController::class, 'requestModule']);
 
 Route::get('admin/',function() {
     return Redirect::to('/admin/login');

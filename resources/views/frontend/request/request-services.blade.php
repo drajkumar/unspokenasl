@@ -49,69 +49,21 @@
     <!-- We're excited to serve you! -->
     <section class="section section-lg text-center pb-0">
       <div class="container">
-        <h3 class="wow-outer"><span class="wow slideInDown"> We're excited to serve you!! </span></h3>
-        <p class="wow-outer mt-3"><span class="wow slideInDown" data-wow-delay=".05s">For us to live up to the <a
-              style="color: #005e54;text-decoration:underline;" href="the-unspoken-promise.html">Unspoken Promise</a>
-            and perform exceptional service, each request is assigned to one of our interpreters with specializations
-            that coordinate with your consumer's need. </span></p>
+        <h3 class="wow-outer"><span class="wow slideInDown"> {{$pageintro->title}} </span></h3>
+        <p class="wow-outer mt-3"><span class="wow slideInDown" data-wow-delay=".05s">{!! $pageintro->description !!} </span></p>
       </div>
     </section>
     <section class="section section-lg ">
       <div class="container">
         <div class="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse">
           <div class="col-md-10 col-lg-6 col-xl-5">
-            <h4 class="wow-outer"><span class="wow slideInDown">Getting Started in 3 EASY Steps!</span></h4>
+            <h4 class="wow-outer"><span class="wow slideInDown">{{$pagemodules->title}}</span></h4>
             <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">
-                <ol style="list-style-type:inherit">
-                  <li> 1. <span style="color: #333333;"><strong>CONNECT</strong>: Send us your request below or</span>
-                    <a style="color: #005e54;text-decoration:underline;" href="contact-us.html">inquiry</a>.</li>
-                  <li> 2. <span style="color: #333333;"><strong>AGREEMENT</strong>: We will send you a simple electronic
-                      service agreement to establish a profile with us.</span></li>
-                  <li> 3. <span style="color: #333333;"><strong>REQUEST</strong>: As a client with Unspoken Language
-                      Services, you can now access our interpreters easily by requesting services anytime via
-                      email:</span> <a style="color: #005e54;text-decoration:underline;"
-                      href="mailto:services@unspokensigns.com">services@unspokensigns.com</a> <span
-                      style="color: #333333;">or through your <a style="color: #005e54;text-decoration:underline;"
-                        href="https://clienthub.getjobber.com/client_hubs/51f9fd26-4bd5-4ac9-bebe-5fea857c7e17/login/new">online
-                        portal.</a></span></li>
-                </ol>
+            {!! $pagemodules->description !!}
               </span></p>
-            <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">Organizing a large conference
-                requires a great deal of preparation, but the hiring of a quality sign language interpreter is
-                frequently overlooked.</span></p>
-            <br>
-            <h4 class="wow-outer"><span class="wow slideInDown">A FEW THINGS TO NOTE:</span></h4>
-            <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".05s">
-                <ol class="note-list">
-                  <li style="text-align: left;">
-                    <blockquote>
-                      <p><span style="font-weight: 400f; color: #333333;">1. → Requests are typically fulfilled within
-                          24 hours</span></p>
-                    </blockquote>
-                  </li>
-                  <li style="text-align: left;">
-                    <blockquote>
-                      <p><span style="font-weight: 400f; color: #333333;">2. → Once we've found the right interpreter,
-                          you will receive confirmation of services inclusive of your interpreter's name.</span></p>
-                    </blockquote>
-                  </li>
-                  <li style="text-align: left;">
-                    <blockquote>
-                      <p><span style="color: #333333;"> 3. → If your request needs to be fulfilled in less than 24
-                          hours<a style="color: #005e54; text-decoration: underline;" href="contact-us.html"> Contact
-                            Us</a>.</span></p>
-                    </blockquote>
-                  </li>
-                  <li style="text-align: left;">
-                    <blockquote>
-                      <p><span style="font-weight: 400f; color: #333333;">4. → Additional questions? Please email us at
-                          <a style="color: #005e54; text-decoration: underline;"
-                            href="mailto:services@unspokensigns.com">services@unspokensigns.com</a></span></p>
-                    </blockquote>
-                  </li>
-                </ol>
-
-              </span></p>
+           
+            
+            
 
           </div>
           <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInRight"

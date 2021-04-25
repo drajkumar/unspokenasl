@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contactus;
 use App\Models\Pagemodule;
+use App\Models\Pageintro;
 
 class RequestController extends Controller
 {
     public function requestservices()
     {
-        return view('frontend.request.request-services');
+        $pageintro = Pageintro::where('page_name', 'request')->first();
+        $pagemodules = Pagemodule::where('page_name', 'request-module')->first();
+        //dd($pageintro);
+        return view('frontend.request.request-services', compact('pageintro', 'pagemodules'));
     }
 
     public function contactus()
